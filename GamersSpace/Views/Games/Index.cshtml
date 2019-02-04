@@ -1,0 +1,69 @@
+﻿@using GamersSpace.Models
+
+@{
+    var games = ViewBag.Games;
+    Layout = null;
+    ViewBag.Title = "Home Page";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        var gameList = [];
+    </script>
+    @for (int i = 0; i < games.Count; i++)
+    {
+        <script>
+            gameList[@i] = {
+                id:@games[i].id,
+                name: "@games[i].name",
+                genre: "@games[i].genre",
+                publisher: "@games[i].publisher",
+                release:@games[i].release,
+                rating:@games[i].rating,
+            }
+        </script>
+    }
+    <meta name="viewport" content="width=device-width" />
+    <title>Gamers Space</title>
+</head>
+    <body>
+        <h1>Gamers Space</h1>
+        <input type="text" id="inputText" name="input" placeholder="Id" />
+        <button type="submit" class="button" name="FindGame" onclick="GameInfo(gameList)">Buscar</button>
+        <button type="submit" class="button" name="ModifyGame">Modificar</button>
+        <button type="submit" class="button" name="ShowGames">Juegos por puntuacion</button>
+        <button type="submit" class="button" name="ShowGames">Juegos por ID</button>
+        <!--<div id="GameList">
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Genre</th>
+                <th>Publisher</th>
+                <th>Release</th>
+                <th>Raiting</th>
+            </tr>
+            <tr>
+                <td>Prueba1</td>
+                <td>Prueba1</td>
+                <td>Prueba1</td>
+                <td>Prueba1</td>
+                <td>Prueba1</td>
+                <td>Prueba1</td>
+            </tr>
+            <tr>
+                <td>Prueba2</td>
+                <td>Prueba3</td>
+                <td>Prueba4</td>
+                <td>Prueba5</td>
+                <td>Prueba6</td>
+                <td>Prueba7</td>
+            </tr>
+        </table>
+    </div>
+        -->
+        @Scripts.Render("~/bundles/script")
+    </body>
+</html>
