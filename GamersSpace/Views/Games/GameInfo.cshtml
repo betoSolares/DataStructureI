@@ -1,23 +1,32 @@
-﻿@{
+﻿@model GamersSpace.Models.Game
+
+@{
     Layout = null;
-    ViewBag.Title = "Main Page";
 }
 
 <!DOCTYPE html>
+
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
+    <title>GameInfo</title>
 </head>
 <body>
     <h1>Gamers Space</h1>
     <form>
         <input type="text" id="inputText" name="inputValue" placeholder="Id" />
+        @*<button type="submit" class="button" name="FindGame" onclick="@("window.location.href='" + Url.Action("GameInfo", "Games", new { id = "Hola" }) + "'");">Buscar</button>*@
         <input type="submit" class="button" name="FindGame" value="Buscar Juego" formmethod="post" formaction=@Url.Action("GameInfo") />
         <button type="submit" class="button" name="ModifyGame">Modificar</button>
         <button type="submit" class="button" name="ShowGames">Juegos por puntuacion</button>
         <button type="submit" class="button" name="ShowGames">Juegos por ID</button>
     </form>
     @Scripts.Render("~/bundles/script")
+    <h2>Informacion del juego</h2>
+    <p>Nombre: @Model.name</p>
+    <p>Desarrollador: @Model.publisher</p>
+    <p>Calificacion: @Model.rating</p>
+    <p>Año de lanzamiento: @Model.release</p>
+    <p>Genero: @Model.genre</p>
 </body>
 </html>

@@ -119,6 +119,7 @@
     <Content Include="Views\web.config" />
     <None Include="packages.config" />
     <Content Include="Views\Games\Index.cshtml" />
+    <Content Include="Views\Games\GameInfo.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
