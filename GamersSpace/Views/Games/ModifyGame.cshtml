@@ -1,0 +1,57 @@
+﻿@model GamersSpace.Models.Game
+
+@{
+    Layout = null;
+    ViewBag.Title = "Game Modification";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <h1>Gamers Space</h1>
+    <form id="navigation" class="navigation">
+        <input type="text" class="textbox" id="inputText" name="inputValue" placeholder="Id" />
+        <input type="submit" class="button" name="FindGame" value="Buscar Juego" formmethod="post" formaction=@Url.Action("GameInfo") />
+        <input type="submit" class="button" name="ModifyGame" value="Modificar Juego" formmethod="post" formaction=@Url.Action("ModifyGame") />
+        <button type="submit" class="button" name="ShowGames">Juegos por puntuacion</button>
+        <button type="submit" class="button" name="ShowGames">Juegos por ID</button>
+    </form>
+    <h2>Modificar Juego</h2>
+    <form id="modification" class="modification" action="/Games/GameModification" method="post">
+        <input type="hidden" name="idValue" id="idValue" value=@Model.id />
+        <table id="formTable" class="contentTable">
+            <tr>
+                <td>Nombre: </td>
+                <td>@Model.name</td>
+                <td><input type="text" class="textbox" id="nameValue" name="nameValue" placeholder="Texto" /></td>
+            </tr>
+            <tr>
+                <td>Desarrollador: </td>
+                <td>@Model.publisher</td>
+                <td><input type="text" class="textbox" id="publisherValue" name="publisherValue" placeholder="Texto" /></td>
+            </tr>
+            <tr>
+                <td>Calificacion: </td>
+                <td>@Model.rating</td>
+                <td><input type="text" class="textbox" id="rateValue" name="rateValue" pattern="[0-9]+([\.][0-9]+)?" placeholder="Numero con decimal" /></td>
+            </tr>
+            <tr>
+                <td>Año de lanzamiento: </td>
+                <td>@Model.release</td>
+                <td><input type="text" class="textbox" id="releaseValue" pattern="[0-9]" name="releaseValue" placeholder="Numero" /></td>
+            </tr>
+            <tr>
+                <td>Genero: </td>
+                <td>@Model.genre</td>
+                <td><input type="text" class="textbox" id="genreValue" name="genreValue" placeholder="Texto" /></td>
+            </tr>
+        </table>
+        <input type="submit" class="button" name="Modifier" value="Modificar" />
+        <input type="submit" class="button" name="Modifier" value="Cancelar" />
+    </form>
+</body>
+</html>

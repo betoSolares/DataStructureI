@@ -11,13 +11,14 @@
 </head>
 <body>
     <h1>Gamers Space</h1>
-    <form>
+    <form id="navigation" class="navigation">
         <input type="text" id="inputText" name="inputValue" placeholder="Id" />
         <input type="submit" class="button" name="FindGame" value="Buscar Juego" formmethod="post" formaction=@Url.Action("GameInfo") />
-        <button type="submit" class="button" name="ModifyGame">Modificar</button>
+        <input type="submit" class="button" name="ModifyGame" value="Modificar Juego" formmethod="post" formaction=@Url.Action("ModifyGame") />
         <button type="submit" class="button" name="ShowGames">Juegos por puntuacion</button>
         <button type="submit" class="button" name="ShowGames">Juegos por ID</button>
     </form>
+    <p>@TempData["state"]</p>
     @Scripts.Render("~/bundles/script")
 </body>
 </html>

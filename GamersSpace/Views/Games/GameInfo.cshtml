@@ -2,22 +2,21 @@
 
 @{
     Layout = null;
+    ViewBag.Title = "Game Information";
 }
 
 <!DOCTYPE html>
-
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>GameInfo</title>
+    <title>@ViewBag.Title</title>
 </head>
 <body>
     <h1>Gamers Space</h1>
-    <form>
+    <form id="navigation" class="navigation">
         <input type="text" id="inputText" name="inputValue" placeholder="Id" />
-        @*<button type="submit" class="button" name="FindGame" onclick="@("window.location.href='" + Url.Action("GameInfo", "Games", new { id = "Hola" }) + "'");">Buscar</button>*@
         <input type="submit" class="button" name="FindGame" value="Buscar Juego" formmethod="post" formaction=@Url.Action("GameInfo") />
-        <button type="submit" class="button" name="ModifyGame">Modificar</button>
+        <input type="submit" class="button" name="ModifyGame" value="Modificar Juego" formmethod="post" formaction=@Url.Action("ModifyGame") />
         <button type="submit" class="button" name="ShowGames">Juegos por puntuacion</button>
         <button type="submit" class="button" name="ShowGames">Juegos por ID</button>
     </form>
