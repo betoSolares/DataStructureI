@@ -14,11 +14,10 @@
 <body>
     <h1>Gamers Space</h1>
     <form id="navigation" class="navigation">
-        <input type="text" class="textbox" id="inputText" name="inputValue" placeholder="Id" />
+        <input type="text" id="inputText" name="inputValue" placeholder="Id" />
         <input type="submit" class="button" name="FindGame" value="Buscar Juego" formmethod="post" formaction=@Url.Action("GameInfo") />
         <input type="submit" class="button" name="ModifyGame" value="Modificar Juego" formmethod="post" formaction=@Url.Action("ModifyGame") />
-        <button type="submit" class="button" name="ShowGames">Juegos por puntuacion</button>
-        <button type="submit" class="button" name="ShowGames">Juegos por ID</button>
+        <input type="submit" class="button" name="ShowGames" value="Lista de Juegos" formmethod="get" formaction=@Url.Action("GameList") />
     </form>
     <h2>Modificar Juego</h2>
     <form id="modification" class="modification" action="/Games/GameModification" method="post">

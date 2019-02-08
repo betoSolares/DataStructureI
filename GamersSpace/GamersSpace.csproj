@@ -121,6 +121,7 @@
     <Content Include="Views\Games\Index.cshtml" />
     <Content Include="Views\Games\GameInfo.cshtml" />
     <Content Include="Views\Games\ModifyGame.cshtml" />
+    <Content Include="Views\Games\GameList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

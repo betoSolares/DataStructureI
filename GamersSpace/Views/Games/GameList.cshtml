@@ -1,11 +1,12 @@
-﻿@model GamersSpace.Models.Game
+﻿@model List<GamersSpace.Models.Game>
 
 @{
     Layout = null;
-    ViewBag.Title = "Game Information";
+    ViewBag.Title = "Game List";
 }
 
 <!DOCTYPE html>
+
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -19,11 +20,25 @@
         <input type="submit" class="button" name="ModifyGame" value="Modificar Juego" formmethod="post" formaction=@Url.Action("ModifyGame") />
         <input type="submit" class="button" name="ShowGames" value="Lista de Juegos" formmethod="get" formaction=@Url.Action("GameList") />
     </form>
-    <h2>Informacion del juego</h2>
-    <p>Nombre: @Model.name</p>
-    <p>Desarrollador: @Model.publisher</p>
-    <p>Calificacion: @Model.rating</p>
-    <p>Año de lanzamiento: @Model.release</p>
-    <p>Genero: @Model.genre</p>
+    <h2>Lista de juegos</h2>
+    <table id="formTable" class="contentTable">
+        <tr>
+            <th>Nombre</th>
+            <th>Desarrollador</th>
+            <th>Calificacion</th>
+            <th>Genero</th>
+            <th>Año de lanzamiento</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.name</td>
+                <td>@item.publisher</td>
+                <td>@item.rating</td>
+                <td>@item.genre</td>
+                <td>@item.release</td>
+            </tr>
+        }
+    </table>
 </body>
 </html>

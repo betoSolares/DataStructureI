@@ -36,16 +36,33 @@ namespace GamersSpace.Controllers {
 
         // Modify the game data
         [HttpPost]
-        public ActionResult GameModification(int idValue, string nameValue, string publisherValue, double? rateValue, int? releaseValue, string genreValue) {
-            if(GameDataChange(idValue, nameValue, publisherValue, rateValue, releaseValue, genreValue)) {
-                TempData["state"] = "changeSucces";
-            }
-            else {
-                TempData["state"] = "changeFailed";
+        public ActionResult GameModification(string Modifier, int idValue, string nameValue, string publisherValue, double? rateValue, int? releaseValue, string genreValue) {
+            if(ModelState.IsValid && !String.IsNullOrEmpty(Modifier)) {
+                switch(Modifier) {
+                    case "Modificar":
+                        if (GameDataChange(idValue, nameValue, publisherValue, rateValue, releaseValue, genreValue))
+                        {
+                            TempData["state"] = "changeSucces";
+                        }
+                        else
+                        {
+                            TempData["state"] = "changeFailed";
+                        }
+                        break;
+
+                    case "Cancelar":
+                        break;
+                }
             }
             return RedirectToAction("Index");
         }
 
+        // Return the view to the list of games
+        [HttpGet]
+        public ActionResult GameList() {
+            return View(games);
+        }
+        
         /**
          * @desc: Check if there is a game with the same id, and return the correct view.
          * @param: string id - The id to match.
@@ -108,7 +125,7 @@ namespace GamersSpace.Controllers {
                 return false;
             }
         }
-
+        
     }
 
 }
