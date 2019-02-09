@@ -11,34 +11,49 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
+    @Styles.Render("~/bundles/style")
 </head>
 <body>
-    <h1>Gamers Space</h1>
-    <form id="navigation" class="navigation">
-        <input type="text" id="inputText" name="inputValue" placeholder="Id" />
-        <input type="submit" class="button" name="FindGame" value="Buscar Juego" formmethod="post" formaction=@Url.Action("GameInfo") />
-        <input type="submit" class="button" name="ModifyGame" value="Modificar Juego" formmethod="post" formaction=@Url.Action("ModifyGame") />
-        <input type="submit" class="button" name="ShowGames" value="Lista de Juegos" formmethod="get" formaction=@Url.Action("GameList") />
-    </form>
-    <h2>Lista de juegos</h2>
-    <table id="formTable" class="contentTable">
-        <tr>
-            <th>Nombre</th>
-            <th>Desarrollador</th>
-            <th>Calificacion</th>
-            <th>Genero</th>
-            <th>Año de lanzamiento</th>
-        </tr>
-        @foreach (var item in Model)
-        {
+    <div class="section title">
+        <div class="container title">
+            <a href=@Url.Action("Index")><h1>Gamers Space</h1></a>
+        </div>
+    </div>
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="twelve columns">
+                    <form id="navigation" class="navigation">
+                        <input type="text" id="inputText" name="inputValue" placeholder="Id" />
+                        <input type="submit" class="btn button-primary" name="FindGame" value="Buscar Juego" formmethod="post" formaction=@Url.Action("GameInfo") />
+                        <input type="submit" class="btn button-primary" name="ModifyGame" value="Modificar Juego" formmethod="post" formaction=@Url.Action("ModifyGame") />
+                        <input type="submit" class="btn button-primary" name="ShowGames" value="Lista de Juegos" formmethod="get" formaction=@Url.Action("GameList") />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <center><h3>Lista de juegos</h3></center>
+    <div class="section div">
+        <table id="formTable" class="center" >
             <tr>
-                <td>@item.name</td>
-                <td>@item.publisher</td>
-                <td>@item.rating</td>
-                <td>@item.genre</td>
-                <td>@item.release</td>
+                <th>Nombre</th>
+                <th>Desarrollador</th>
+                <th>Calificacion</th>
+                <th>Genero</th>
+                <th>Año de lanzamiento</th>
             </tr>
-        }
-    </table>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.name</td>
+                    <td>@item.publisher</td>
+                    <td>@item.rating</td>
+                    <td>@item.genre</td>
+                    <td>@item.release</td>
+                </tr>
+            }
+        </table>
+    </div>
 </body>
 </html>

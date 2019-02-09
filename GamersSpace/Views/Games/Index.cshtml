@@ -6,18 +6,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>@ViewBag.Title</title>
+    @Styles.Render("~/bundles/style")
 </head>
 <body>
-    <h1>Gamers Space</h1>
-    <form id="navigation" class="navigation">
-        <input type="text" id="inputText" name="inputValue" placeholder="Id" />
-        <input type="submit" class="button" name="FindGame" value="Buscar Juego" formmethod="post" formaction=@Url.Action("GameInfo") />
-        <input type="submit" class="button" name="ModifyGame" value="Modificar Juego" formmethod="post" formaction=@Url.Action("ModifyGame") />
-        <input type="submit" class="button" name="ShowGames" value="Lista de Juegos" formmethod="get" formaction=@Url.Action("GameList") />
-    </form>
-    <p>@TempData["state"]</p>
+    <div class="section title">
+        <div class="container title">
+            <a href=@Url.Action("Index")><h1>Gamers Space</h1></a>
+        </div>
+    </div>
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="twelve columns">
+                    <form id="navigation" class="navigation">
+                        <input type="text" id="inputText" name="inputValue" placeholder="Id" />
+                        <input type="submit" class="btn button-primary" name="FindGame" value="Buscar Juego" formmethod="post" formaction=@Url.Action("GameInfo") />
+                        <input type="submit" class="btn button-primary" name="ModifyGame" value="Modificar Juego" formmethod="post" formaction=@Url.Action("ModifyGame") />
+                        <input type="submit" class="btn button-primary" name="ShowGames" value="Lista de Juegos" formmethod="get" formaction=@Url.Action("GameList") />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     @Scripts.Render("~/bundles/script")
 </body>
 </html>

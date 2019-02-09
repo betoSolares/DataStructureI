@@ -10,47 +10,65 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
+    @Styles.Render("~/bundles/style")
 </head>
 <body>
-    <h1>Gamers Space</h1>
-    <form id="navigation" class="navigation">
-        <input type="text" id="inputText" name="inputValue" placeholder="Id" />
-        <input type="submit" class="button" name="FindGame" value="Buscar Juego" formmethod="post" formaction=@Url.Action("GameInfo") />
-        <input type="submit" class="button" name="ModifyGame" value="Modificar Juego" formmethod="post" formaction=@Url.Action("ModifyGame") />
-        <input type="submit" class="button" name="ShowGames" value="Lista de Juegos" formmethod="get" formaction=@Url.Action("GameList") />
-    </form>
-    <h2>Modificar Juego</h2>
-    <form id="modification" class="modification" action="/Games/GameModification" method="post">
-        <input type="hidden" name="idValue" id="idValue" value=@Model.id />
-        <table id="formTable" class="contentTable">
-            <tr>
-                <td>Nombre: </td>
-                <td>@Model.name</td>
-                <td><input type="text" class="textbox" id="nameValue" name="nameValue" placeholder="Texto" /></td>
-            </tr>
-            <tr>
-                <td>Desarrollador: </td>
-                <td>@Model.publisher</td>
-                <td><input type="text" class="textbox" id="publisherValue" name="publisherValue" placeholder="Texto" /></td>
-            </tr>
-            <tr>
-                <td>Calificacion: </td>
-                <td>@Model.rating</td>
-                <td><input type="text" class="textbox" id="rateValue" name="rateValue" pattern="[0-9]+([\.][0-9]+)?" placeholder="Numero con decimal" /></td>
-            </tr>
-            <tr>
-                <td>Año de lanzamiento: </td>
-                <td>@Model.release</td>
-                <td><input type="text" class="textbox" id="releaseValue" pattern="[0-9]" name="releaseValue" placeholder="Numero" /></td>
-            </tr>
-            <tr>
-                <td>Genero: </td>
-                <td>@Model.genre</td>
-                <td><input type="text" class="textbox" id="genreValue" name="genreValue" placeholder="Texto" /></td>
-            </tr>
-        </table>
-        <input type="submit" class="button" name="Modifier" value="Modificar" />
-        <input type="submit" class="button" name="Modifier" value="Cancelar" />
-    </form>
+    <div class="section title">
+        <div class="container title">
+            <a href=@Url.Action("Index")><h1>Gamers Space</h1></a>
+        </div>
+    </div>
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="twelve columns">
+                    <form id="navigation" class="navigation">
+                        <input type="text" id="inputText" name="inputValue" placeholder="Id" />
+                        <input type="submit" class="btn button-primary" name="FindGame" value="Buscar Juego" formmethod="post" formaction=@Url.Action("GameInfo") />
+                        <input type="submit" class="btn button-primary" name="ModifyGame" value="Modificar Juego" formmethod="post" formaction=@Url.Action("ModifyGame") />
+                        <input type="submit" class="btn button-primary" name="ShowGames" value="Lista de Juegos" formmethod="get" formaction=@Url.Action("GameList") />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <center><h3>Modificar Juego</h3></center>
+    <div class="section div">
+        <form id="modification" action="/Games/GameModification" method="post" class="center">
+            <input type="hidden" name="idValue" id="idValue" value=@Model.id />
+            <table id="formTable" class="contentTable">
+                <tbody>
+                    <tr>
+                        <td>Nombre: </td>
+                        <td>@Model.name</td>
+                        <td><input type="text" class="textbox" id="nameValue" name="nameValue" placeholder="Texto" /></td>
+                    </tr>
+                    <tr>
+                        <td>Desarrollador: </td>
+                        <td>@Model.publisher</td>
+                        <td><input type="text" class="textbox" id="publisherValue" name="publisherValue" placeholder="Texto" /></td>
+                    </tr>
+                    <tr>
+                        <td>Calificacion: </td>
+                        <td>@Model.rating</td>
+                        <td><input type="text" class="textbox" id="rateValue" name="rateValue" pattern="[0-9]+([\.][0-9]+)?" placeholder="Numero con decimal" /></td>
+                    </tr>
+                    <tr>
+                        <td>Año de lanzamiento: </td>
+                        <td>@Model.release</td>
+                        <td><input type="text" class="textbox" id="releaseValue" pattern="[0-9]" name="releaseValue" placeholder="Numero" /></td>
+                    </tr>
+                    <tr>
+                        <td>Genero: </td>
+                        <td>@Model.genre</td>
+                        <td><input type="text" class="textbox" id="genreValue" name="genreValue" placeholder="Texto" /></td>
+                    </tr>
+                </tbody>
+            </table>
+            <input type="submit" class="btn button-primary" name="Modifier" value="Modificar" />
+            <input type="submit" class="btn button-primary" name="Modifier" value="Cancelar" />
+        </form>
+    </div>
+    <p style="margin: 5px"><b>*Nota: </b>Los campos vacios no seran actualizados.</p>
 </body>
 </html>
