@@ -43,3 +43,17 @@
     margin-right: auto;
     text-align: center;
 }
+
+.success {
+    background-color: #00c851;
+    border-color: #007e33;
+    color: #eaedef;
+    padding: 9px;
+}
+
+.failed {
+    background-color: #ff4444;
+    border-color: #cc0000;
+    color: #eaedef;
+    padding: 9px;
+}

@@ -30,6 +30,35 @@
             </div>
         </div>
     </div>
-    @Scripts.Render("~/bundles/script")
+    <input type="hidden" value=@TempData["state"] id="stateValue" />
+    <p id="paragraph"></p>
+    <script>
+        // Execute the function onload page
+        window.onload = function () {
+            CustomMessage()
+        }
+
+        // Insert a custom message
+        function CustomMessage() {
+            state = document.getElementById("stateValue").value
+            paragraph = document.getElementById("paragraph")
+            var message
+            if (state == "changeSucces") {
+                paragraph.className = "success"
+                message = document.createTextNode("Se modifico el juego de manera correcta.")
+            }
+            else {
+                paragraph.className = "failed"
+                if (state == "noNumber") {
+                    message = document.createTextNode("Por favor ingrese un numero en el campo de ID.")
+                } else if (state == "incorrectID") {
+                    message = document.createTextNode("No se encontro ningun juego con el ID ingresado.")
+                } else if (state == "changeFailed") {
+                    message = document.createTextNode("Ocurrio un error al tratar de realizar la modificacion.")
+                }
+            }
+            paragraph.appendChild(message)
+        }
+    </script>
 </body>
 </html>
