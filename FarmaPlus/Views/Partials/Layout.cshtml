@@ -7,22 +7,23 @@
     @Styles.Render("~/bundles/style")
 </head>
 <body>
-    <div class="section title">
-        <div class="container title">
-            <h1>FarmaPlus S.A.</h1>
-        </div>
-    </div>
-    <div class="section">
+    <header>
         <div class="container">
-            <div class="row">
-                <div class="twelve columns">
-                    <form id="navigation" class="navigation">
-                        <input type="submit" class="btn button-primary" name="Employees" value="Empleados" />
-                    </form>
-                </div>
+            <div class="twelve columns">
+                <h5 class="u-pull-left">FARMA PLUS S.A.</h5>
+                <nav class="u-pull-right">
+                    <ul>
+                        <li>@Html.ActionLink("Empleados", "Employees", "Employees")</li>
+                        <li>@Html.ActionLink("###", "Employees", "Employees")</li>
+                        <li>@Html.ActionLink("###", "Employees", "Employees")</li>
+                        <li>@Html.ActionLink("###", "Employees", "Employees")</li>
+                        <li>@Html.ActionLink("###", "Employees", "Employees")</li>
+                        <li>@Html.ActionLink("###", "Employees", "Employees")</li>
+                    </ul>
+                </nav>
             </div>
         </div>
-    </div>
+    </header>
     @RenderBody()
     @RenderSection("scripts", required: false)
 </body>

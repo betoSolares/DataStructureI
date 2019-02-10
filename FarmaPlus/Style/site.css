@@ -1,23 +1,58 @@
-﻿.section{
-    padding: 1rem 0 1rem;
+﻿/** Navigation menu **/
+header {
+    background-color: #86ba90;
 }
 
-.title {
-    background-color: #20639b;
-    padding: 10px 0px 10px;
-    text-align: center;
+header::after {
+    content: '';
+    display: table;
+    clear: both;
 }
 
-.title h1 {
-    color: #eaedef;
-    font-weight: bold;
+header h5 {
+    color: #1e1e24;
+    padding: 15px 0;
 }
 
-.title a:link, a:visited {
-    color: #eaedef;
-    text-decoration: none
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
+nav li {
+    display: inline-block;
+    margin-left: 60px;
+    padding-top: 23px;
+    position: relative;
+}
+
+nav a {
+    color: #1e1e24;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+nav a:hover {
+    color: #272727;
+}
+
+nav a::before {
+    background-color: #1e1e24;
+    content: '';
+    display: block;
+    height: 5px;
+    position: absolute;
+    top: 0;
+    transition: all ease-in-out 250ms;
+    width: 0%;
+}
+
+nav a:hover::before {
+    width: 100%;
+}
+
+/** Buttons **/
 .btn {
     background-color: #20639b !important;
     border-color: #20639b !important;
@@ -32,28 +67,3 @@
     color: #eaedef !important;
 }
 
-.div {
-    display: block;
-    text-align: center;
-}
-
-.center {
-    display: inline-block;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-}
-
-.success {
-    background-color: #00c851;
-    border-color: #007e33;
-    color: #eaedef;
-    padding: 9px;
-}
-
-.failed {
-    background-color: #ff4444;
-    border-color: #cc0000;
-    color: #eaedef;
-    padding: 9px;
-}
