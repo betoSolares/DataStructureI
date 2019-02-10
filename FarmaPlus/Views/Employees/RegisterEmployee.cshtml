@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "Register Employee";
+    Layout = "~/Views/Partials/Layout.cshtml";
+}
+
+<center><h5 style="padding: 25px">Ingresar Empleado</h5></center>
+<div class="twelve columns center">
+    <form class="form" id="employees" action="Employees/RegisterEmployee" method="post" >
+        <input type="text" class="textbox" name="name" placeholder="Nombre - Texto" required />
+        <input type="text" class="textbox" name="id" pattern="[0-9]" placeholder="Codigo - Numeros" required />
+        <input type="submit" class="button-primary btn" name="Enter" value="Ingresar" />
+    </form>
+</div>

@@ -10,7 +10,7 @@ namespace FarmaPlus {
             routes.MapRoute(
                 name: "EntryPoint",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Employees", action = "Employees", id = UrlParameter.Optional }
+                defaults: new { controller = "Employees", action = "RegisterEmployee", id = UrlParameter.Optional }
             );
         }
 

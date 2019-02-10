@@ -6,7 +6,7 @@ namespace FarmaPlus.Controllers {
 
         // Return the form for insert a new employee
         [HttpGet]
-        public ActionResult Employees() {
+        public ActionResult RegisterEmployee() {
             return View();
         }
 

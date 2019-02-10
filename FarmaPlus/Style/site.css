@@ -38,7 +38,7 @@ nav a:hover {
 }
 
 nav a::before {
-    background-color: #1e1e24;
+    background-color: #272727;
     content: '';
     display: block;
     height: 5px;
@@ -52,18 +52,39 @@ nav a:hover::before {
     width: 100%;
 }
 
+/** TextBox **/
+.textbox {
+    display: block;
+}
+
+.textbox:focus {
+    border-color: #86ba90 !important;
+}
+
 /** Buttons **/
 .btn {
-    background-color: #20639b !important;
-    border-color: #20639b !important;
+    background-color: #86ba90 !important;
+    border-color: #86ba90 !important;
     border-radius: 125px !important;
-    color: #eaedef !important;
+    color: #1e1e24 !important;
 }
 
 .btn:hover {
-    background-color: #173f5f !important;
-    border-color: #173f5f !important;
+    background-color: #5d9a69 !important;
+    border-color: #5d9a69 !important;
     border-radius: 125px !important;
-    color: #eaedef !important;
+    color: #272727 !important;
 }
 
+/** Forms **/
+.center {
+    display: block;
+    text-align: center;
+}
+
+.form {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
