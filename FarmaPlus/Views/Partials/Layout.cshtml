@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div class="section title">
+        <div class="container title">
+            <a href=@Url.Action("Index")><h1>Gamers Space</h1></a>
+        </div>
+    </div>
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="twelve columns">
+                    <form id="navigation" class="navigation">
+                        <input type="submit" class="btn button-primary" name="Employees" value="Empleados" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    @RenderBody()
+    @RenderSection("scripts", required: false)
+</body>
+</html>
