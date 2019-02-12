@@ -28,6 +28,12 @@ namespace FarmaPlus.Controllers {
             return RedirectToAction("RegisterEmployee");
         }
 
+        // Return the view for the arrival control form
+        [HttpGet]
+        public ActionResult ArrivalControl() {
+            return View();
+        }
+
         /**
          * @desc: Create a new employee.
          * @param: string name - Name of the new employee.
