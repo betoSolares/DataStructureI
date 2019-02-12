@@ -2,11 +2,11 @@
 
     public class employee {
 
-        string name { get; set; }
-        int id { get; set; }
-        int hoursWorked { get; set; }
-        bool inOffice { get; set; }
-        double salary { get; set; }
+        public string name { get; set; }
+        public int id { get; set; }
+        public int hoursWorked { get; set; }
+        public bool inOffice { get; set; }
+        public double salary { get; set; }
 
     }
 
