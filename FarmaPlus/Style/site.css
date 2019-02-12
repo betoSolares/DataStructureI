@@ -88,3 +88,33 @@ nav a:hover::before {
     margin-right: auto;
     text-align: center;
 }
+
+/** Alert message **/
+.failed {
+    background-color: #f44336;
+    color: white;
+    margin-bottom: 15px;
+    padding: 20px;
+}
+
+.success {
+    background-color: #00c851;
+    color: white;
+    margin-bottom: 15px;
+    padding: 20px;
+}
+
+.closebtn {
+    color: white;
+    cursor: pointer;
+    float: right;
+    font-size: 22px;
+    font-weight: bold;
+    line-height: 20px;
+    margin-left: 15px;
+    transition: 03s;
+}
+
+.closebtn:hover {
+    color: black;
+}

@@ -10,6 +10,9 @@ namespace FarmaPlus {
                 "~/Style/normalize.css",
                 "~/Style/skeleton.css",
                 "~/Style/site.css"));
+            // JS bundle
+            bundles.Add(new ScriptBundle("~/bundles/scripts").Include(
+                "~/Scripts/site.js"));
         }
 
     }

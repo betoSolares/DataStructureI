@@ -102,6 +102,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Scripts\site.js" />
     <Content Include="Style\normalize.css" />
     <Content Include="Style\site.css" />
     <Content Include="Style\skeleton.css" />
