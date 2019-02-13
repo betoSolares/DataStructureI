@@ -12,6 +12,14 @@ window.onload = function () {
         alertBox.className = "failed"
         text = document.createTextNode("Ya existe un empleado con el mismo codigo.")
     }
+    else if (state == "failedArrive") {
+        alertBox.className = "failed"
+        text = document.createTextNode("Por favor verifique si el empleado ya esta en la oficina o si existe.")
+    }
+    else if (state == "successArrive") {
+        alertBox.className = "success"
+        text = document.createTextNode("Se guardo el estado del empleado.")
+    }
     else {
         alertBox.style.display = "none"
     }

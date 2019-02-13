@@ -39,10 +39,10 @@ namespace FarmaPlus.Controllers {
         [HttpPost]
         public ActionResult ArrivalControl(string name, int id, TimeSpan? time) {
             if(NewArrival(id, time)) {
-                TempData["state"] = "arriveSucces";
+                TempData["state"] = "successArrive";
             }
             else {
-                TempData["state"] = "failedSucces";
+                TempData["state"] = "failedArrive";
             }
             return View();
         }
