@@ -8,10 +8,9 @@ namespace FarmaPlus {
         public static void RegisterRoutes(RouteCollection routes) {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.MapRoute(
-                name: "EntryPoint",
+                name: "RegisterEmployee",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Employees", action = "RegisterEmployee", id = UrlParameter.Optional }
-            );
+                defaults: new { controller = "Employees", action = "RegisterEmployee", id = UrlParameter.Optional });
         }
 
     }

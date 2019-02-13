@@ -3,6 +3,7 @@
     Layout = "~/Views/Partials/Layout.cshtml";
 }
 
+<p>@TempData["Test"]</p>
 <input type="hidden" id="state" value=@TempData["state"] />
 <div id="alertBox">
     <span class="closebtn" onclick="this.parentElement.style.display = 'none';">&times;</span>
@@ -10,7 +11,7 @@
 </div>
 <center><h5 style="padding: 25px">Control de llegadas</h5></center>
 <div class="twelve columns center">
-    <form class="form" id="employees" action="Employees/RegisterEmployee" method="post">
+    <form class="form" id="employees" action=@Url.Action("ArrivalControl") method="post">
         <input type="text" class="textbox" name="name" placeholder="Nombre - Texto" required />
         <input type="text" class="textbox" name="id" pattern="[0-9]" placeholder="Codigo - Numeros" required />
         <p class="u-pull-left">Hora de entrada: </p>

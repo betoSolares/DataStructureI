@@ -1,4 +1,5 @@
 ﻿using FarmaPlus.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -8,7 +9,7 @@ namespace FarmaPlus.Controllers {
     public class EmployeesController : Controller {
 
         // LinkedList of employees
-        private static LinkedList<employee> employees = new LinkedList<employee>();
+        private static List<employee> employees = new List<employee>();
 
         // Return the form for insert a new employee
         [HttpGet]
@@ -25,12 +26,24 @@ namespace FarmaPlus.Controllers {
             else {
                 TempData["state"] = "failed";
             }
-            return RedirectToAction("RegisterEmployee");
+            return View();
         }
 
         // Return the view for the arrival control form
         [HttpGet]
         public ActionResult ArrivalControl() {
+            return View();
+        }
+
+        // Add a new employee in the arrival control stack
+        [HttpPost]
+        public ActionResult ArrivalControl(string name, int id, TimeSpan? time) {
+            if(NewArrival(id, time)) {
+                TempData["state"] = "arriveSucces";
+            }
+            else {
+                TempData["state"] = "failedSucces";
+            }
             return View();
         }
 
@@ -45,7 +58,29 @@ namespace FarmaPlus.Controllers {
                 return false;
             }
             else {
-                employees.AddLast(new employee { name = name, id = id });
+                employees.Add(new employee { name = name, id = id });
+                return true;
+            }
+        }
+
+        /**
+         * @desc: Update the time and office status of an employee
+         * @param: int id - The id of the employee.
+         * @param: TimeSpane? - The time of the arrive, can be null.
+         * @return: bool - Succes of failed.
+        **/
+        private bool NewArrival(int id, TimeSpan? time) {
+            if(!employees.Any(x => x.id == id)) {
+                return false;
+            }
+            else {
+                if(time != null) {
+                    employees[employees.IndexOf(employees.Find(x => x.id == id))].startTime = (TimeSpan)time;
+                }
+                else {
+                    employees[employees.IndexOf(employees.Find(x => x.id == id))].startTime = DateTime.Now.TimeOfDay;
+                }
+                employees[employees.IndexOf(employees.Find(x => x.id == id))].inOffice = true;
                 return true;
             }
         }
