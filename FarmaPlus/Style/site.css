@@ -118,3 +118,8 @@ nav a:hover::before {
 .closebtn:hover {
     color: black;
 }
+
+/** Numbers **/
+input[type="number"] {
+    width: 214px;
+}
