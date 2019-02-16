@@ -8,8 +8,9 @@ namespace FarmaPlus.Controllers {
 
     public class EmployeesController : Controller {
 
-        // LinkedList of employees
-        private static List<employee> employees = new List<employee>();
+        // Data structures of the project
+        private static LinkedList<employee> employees = new LinkedList<employee>();
+        private static Stack<arrival> arrivals = new Stack<arrival>();
 
         // Return the form for insert a new employee
         [HttpGet]
@@ -58,29 +59,30 @@ namespace FarmaPlus.Controllers {
                 return false;
             }
             else {
-                employees.Add(new employee { name = name, id = id });
+                employees.AddLast(new employee { name = name, id = id });
                 return true;
             }
         }
 
         /**
-         * @desc: Update the time and office status of an employee
+         * @desc: Add a new arrival to the stack
          * @param: int id - The id of the employee.
          * @param: TimeSpane? - The time of the arrive, can be null.
          * @return: bool - Succes of failed.
         **/
         private bool NewArrival(int id, TimeSpan? time) {
-            if(!employees.Any(x => x.id == id)) {
+            if (!employees.Any(x => x.id == id) || arrivals.Any(x => x.employee.id == id)) {
                 return false;
             }
             else {
+                employee employee = employees.Where(x => x.id == id).FirstOrDefault();
+                employees.Find(employee).Value.inOffice = true;
                 if(time != null) {
-                    employees[employees.IndexOf(employees.Find(x => x.id == id))].startTime = (TimeSpan)time;
+                    arrivals.Push(new arrival { employee = employee, entryTime = (TimeSpan)time, appointments = new Random().Next(1, 5) });
                 }
                 else {
-                    employees[employees.IndexOf(employees.Find(x => x.id == id))].startTime = DateTime.Now.TimeOfDay;
+                    arrivals.Push(new arrival { employee = employee, entryTime = DateTime.Now.TimeOfDay, appointments = new Random().Next(1, 5) });
                 }
-                employees[employees.IndexOf(employees.Find(x => x.id == id))].inOffice = true;
                 return true;
             }
         }

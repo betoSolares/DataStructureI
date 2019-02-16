@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace FarmaPlus.Models {
+﻿namespace FarmaPlus.Models {
 
     public class employee {
 
@@ -9,7 +7,6 @@ namespace FarmaPlus.Models {
         public int hoursWorked { get; set; }
         public bool inOffice { get; set; }
         public double salary { get; set; }
-        public TimeSpan startTime { get; set; }
 
     }
 
