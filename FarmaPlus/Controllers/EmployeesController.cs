@@ -48,6 +48,12 @@ namespace FarmaPlus.Controllers {
             return View();
         }
 
+        // Return the view for the make visits simulation
+        [HttpGet]
+        public ActionResult VisitsSimulation() {
+            return View();
+        }
+
         /**
          * @desc: Create a new employee.
          * @param: string name - Name of the new employee.
