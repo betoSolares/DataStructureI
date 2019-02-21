@@ -11,6 +11,7 @@ namespace FarmaPlus.Controllers {
         // Data structures of the project
         private static LinkedList<employee> employees = new LinkedList<employee>();
         private static Stack<arrival> arrivals = new Stack<arrival>();
+        private static Queue<hours> hoursControl = new Queue<hours>();
 
         // Return the form for insert a new employee
         [HttpGet]
@@ -54,6 +55,21 @@ namespace FarmaPlus.Controllers {
             return View();
         }
 
+        // Return the information of the employee who leaves to make his visits
+        [HttpPost]
+        public ActionResult VisitsSimulation(string simulate) {
+            arrival simulation = NewSimulation();
+            if(simulation != null) {
+                TempData["state"] = "successSimulation";
+                ViewBag.Simulation = simulation;
+            }
+            else {
+                TempData["state"] = "failedSimulation";
+                ViewBag.Simulation = null;
+            }
+            return View();
+        }
+
         /**
          * @desc: Create a new employee.
          * @param: string name - Name of the new employee.
@@ -90,6 +106,22 @@ namespace FarmaPlus.Controllers {
                     arrivals.Push(new arrival { employee = employee, entryTime = DateTime.Now.TimeOfDay, appointments = new Random().Next(1, 5) });
                 }
                 return true;
+            }
+        }
+
+        /**
+         * @desc: Return and delete the object in the top of the stack.
+         * @return arrival - The object at the top of the stack.
+        **/
+        private arrival NewSimulation() {
+            if(arrivals.Count > 0) {
+                arrival simulate = arrivals.Pop();
+                employees.Find(simulate.employee).Value.inOffice = false;
+                hoursControl.Enqueue(new hours { employee = simulate.employee, appointments = simulate.appointments, entryTime = simulate.entryTime, appointmentsTime = simulate.entryTime.Add(TimeSpan.FromHours(3)) });
+                return simulate;
+            }
+            else {
+                return null;
             }
         }
 

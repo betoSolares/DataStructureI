@@ -1,9 +1,29 @@
-﻿@{
+﻿@model FarmaPlus.Models.arrival
+
+@{
+    var simulation = ViewBag.Simulation;
     ViewBag.Title = "VisitsSimulation";
     Layout = "~/Views/Partials/Layout.cshtml";
 }
 
-<center><h5 style="padding: 25px">Control de llegadas</h5></center>
-<div class="twelve columns center">
-    <input type="submit" class="button-primary btn" name="simulate" value="Simular Salida" />
+<input type="hidden" id="state" value=@TempData["state"] />
+<div id="alertBox">
+    <span class="closebtn" onclick="this.parentElement.style.display = 'none';">&times;</span>
+    <p id="message"></p>
 </div>
+<center><h5 style="padding: 25px">Simulacion de salidas</h5></center>
+<div class="twelve columns center">
+    <form method="post" action=@Url.Action("VisitsSimulation")>
+        <input type="submit" class="button-primary btn" name="simulate" value="Simular Salida" />
+    </form>
+</div>
+@if(simulation != null) {
+    <div class="twelve columns center" style="text-align: left">
+        <center><h6>Informacion del empleado</h6></center>
+        <p>Nombre: @simulation.employee.name</p>
+        <p>Codigo: @simulation.employee.id</p>
+        <p>Hora de entrada: @simulation.entryTime</p>
+        <p>Hora de salida a las citas: @simulation.entryTime.Add(TimeSpan.FromHours(3))</p>
+        <p>Cantidad de citas: @simulation.appointments</p>
+    </div>
+}
