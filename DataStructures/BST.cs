@@ -60,6 +60,14 @@ namespace DataStructures {
             }
         }
 
+        // Check if the tree is empty
+        public bool IsEmpty() {
+            if (root == null)
+                return true;
+            else
+                return false;
+        }
+
         /**
          * @desc: Find the place to add the new item.
          * @param: K key - The value to compare in the tree.
