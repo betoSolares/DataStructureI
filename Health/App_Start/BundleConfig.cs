@@ -12,7 +12,9 @@ namespace Health {
                 "~/Styles/site.css"));
             // JS Bundle
             bundles.Add(new ScriptBundle("~/bundles/script").Include(
-                "~/Scripts/site.js"));
+                "~/Scripts/jquery-min.js",
+                "~/Scripts/site.js",
+                "~/Scripts/style.js"));
         }
         
     }

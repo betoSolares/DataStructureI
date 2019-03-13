@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/bundles/style")
+</head>
+<body>
+    <nav class="nav-show">
+        <div class="container">
+            <ul class="links">
+                <li class="logo"><a href="#">Tu Salud</a></li>
+                <li>@Html.ActionLink("Cargar Inventario", "LoadInventory", "Inventory")</li>
+                <li>@Html.ActionLink("###", "#", "Inventory")</li>
+                <li>@Html.ActionLink("###", "#", "Inventory")</li>
+                <li>@Html.ActionLink("###", "#", "Inventory")</li>
+                <li>@Html.ActionLink("###", "#", "Inventory")</li>
+                <li>@Html.ActionLink("###", "#", "Inventory")</li>
+                <li class="icon"><a href="javascript:void(0);" onclick="toggleMobileNav();">&#9776;</a></li>
+            </ul>
+        </div>
+    </nav>
+    @RenderBody()
+    @RenderSection("scripts", required: false)
+    @Scripts.Render("~/bundles/script")
+</body>
+</html>

@@ -101,7 +101,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Scripts\jquery-min.js" />
+    <Content Include="Scripts\style.js" />
     <Content Include="Styles\normalize.css" />
+    <Content Include="Styles\site.css" />
     <Content Include="Styles\skeleton.css" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -119,6 +122,7 @@
     <Content Include="Views\web.config" />
     <None Include="packages.config" />
     <Content Include="Resources\inventory.csv" />
+    <Content Include="Views\Partials\Layout.cshtml" />
     <Content Include="Views\Inventory\InventoryLoad.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -127,9 +131,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Scripts\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\DataStructures\DataStructures.csproj">
       <Project>{dda13a63-01d0-4aa7-a00a-b8aef52cb4ac}</Project>

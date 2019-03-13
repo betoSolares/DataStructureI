@@ -10,6 +10,7 @@ namespace Health.Controllers {
         private static BST<Meds, string> tree = new BST<Meds, string>();
 
         // Return the main view
+        [HttpGet]
         public ActionResult InventoryLoad() {
             return View();
         }
