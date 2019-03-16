@@ -53,3 +53,10 @@ function hasScrolled() {
 
     lastScrollTop = st;
 }
+
+// Change to file upload
+$(document).ready(function () {
+    $("#fileChooser").on("change", function () {
+        $("#file").text($("#fileChooser").val())
+    })
+})
