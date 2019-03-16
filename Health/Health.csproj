@@ -102,6 +102,7 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-min.js" />
+    <Content Include="Scripts\site.js" />
     <Content Include="Scripts\style.js" />
     <Content Include="Styles\normalize.css" />
     <Content Include="Styles\site.css" />

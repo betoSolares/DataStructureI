@@ -1,7 +1,11 @@
 ﻿@{
+    ViewBag.BodyClass = "InventoryLoad";
     ViewBag.Title = "Carga de inventario";
     Layout = "~/Views/Partials/Layout.cshtml";
 }
 
-<h2>InventoryLoad</h2>
-
+<input type="hidden" id="empty" value="@ViewBag.Empty" />
+<div class="twelve columns center">
+    <form class="form" id="form" action=@Url.Action("InventoryLoad") method="post">
+    </form>
+</div>

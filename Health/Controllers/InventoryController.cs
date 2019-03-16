@@ -12,6 +12,11 @@ namespace Health.Controllers {
         // Return the main view
         [HttpGet]
         public ActionResult InventoryLoad() {
+            if (tree.IsEmpty()) {
+                ViewBag.Empty = "empty";
+            } else {
+                ViewBag.Empty = "noEmpty";
+            }
             return View();
         }
 
