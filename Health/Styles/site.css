@@ -134,3 +134,31 @@ nav ul li.icon {
         float: none;
     }
 }
+
+/** Buttons **/
+.btn {
+    background-color: #ffe74c !important;
+    border-color: #ffe74c !important;
+    border-radius: 125px !important;
+    color: #ffffff !important;
+}
+
+.btn:hover {
+    background-color: #feeb71 !important;
+    border-color: #feeb71 !important;
+    border-radius: 125px !important;
+    color: #000000 !important;
+}
+
+/** Forms **/
+.center {
+    display: block;
+    text-align: center;
+}
+
+.form {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
