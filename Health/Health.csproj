@@ -122,7 +122,6 @@
   <ItemGroup>
     <Content Include="Views\web.config" />
     <None Include="packages.config" />
-    <Content Include="Resources\inventory.csv" />
     <Content Include="Views\Partials\Layout.cshtml" />
     <Content Include="Views\Inventory\InventoryLoad.cshtml" />
     <None Include="Web.Debug.config">
@@ -132,7 +131,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Data\Files\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataStructures\DataStructures.csproj">
       <Project>{dda13a63-01d0-4aa7-a00a-b8aef52cb4ac}</Project>
