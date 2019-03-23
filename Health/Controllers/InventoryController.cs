@@ -43,6 +43,12 @@ namespace Health.Controllers {
             }
             return View();
         }
+
+        // Get the search bar
+        [HttpGet]
+        public ActionResult SearchProduct() {
+            return View();
+        }
         
         /**
          * @desc: Verify if there is a file and load to the tree the elements.
