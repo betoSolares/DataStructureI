@@ -2,7 +2,7 @@
 $(document).ready(function () {
     if ($('body').is('.InventoryLoad')) {
         if ($('#empty').val() == 'empty') {
-            $input = $('<input type="file" name="PathFile" class="input-file" id="PathFile" />')
+            $input = $('<input type="file" name="PathFile" class="input-file" id="PathFile" accept=".csv" />')
             $input.appendTo($('#form'))
             $file = $('<label for="PathFile" class="file">Select a file</label>')
             $file.appendTo($('#form'))
