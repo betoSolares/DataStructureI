@@ -1,5 +1,6 @@
 ﻿using DataStructures;
 using Health.Models;
+using Newtonsoft.Json;
 using System;
 using System.IO;
 using System.Text.RegularExpressions;
@@ -23,7 +24,7 @@ namespace Health.Controllers {
             return View();
         }
 
-        // Load or download the file
+        // Load or download the file.
         [HttpPost]
         public ActionResult InventoryLoad(HttpPostedFileBase PathFile, string formAction) {
             switch (formAction) {
@@ -38,12 +39,11 @@ namespace Health.Controllers {
                         ViewBag.Empty = "noEmpty";
                     break;
                 case "Descargar Inventario":
-                    break;
+                    return DownloadTree();
             }
             return View();
         }
-
-
+        
         /**
          * @desc: Verify if there is a file and load to the tree the elements.
          * @param: HttpPostedFileBase fileUpload - the file to upload.
@@ -89,6 +89,13 @@ namespace Health.Controllers {
                 }
             }
             return valid;
+        }
+
+        // Serialize the tree to a JSON and download it.
+        private ActionResult DownloadTree() {
+            string path = Path.Combine(Server.MapPath("~/App_Data/Files/") + "tree.json");
+            System.IO.File.WriteAllText(path, JsonConvert.SerializeObject(tree.ToList(), Formatting.Indented));
+            return File(System.IO.File.ReadAllBytes(path), "application/octet-stream", "tree.json");
         }
 
     }
