@@ -56,7 +56,12 @@ function hasScrolled() {
 
 // Change to file upload
 $(document).ready(function () {
-    $("#fileChooser").on("change", function () {
-        $("#file").text($("#fileChooser").val())
+    $("#PathFile").on("change", function () {
+        $(".file").text($("#PathFile").val())
     })
+})
+
+// Close the alertBox
+$('#closebtn').click(function () {
+    $('#alertBox').hide()
 })

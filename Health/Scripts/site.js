@@ -14,3 +14,18 @@ $(document).ready(function () {
         }
     }
 })
+
+// Alert messages
+$(document).ready(function () {
+    if ($('body').is('.InventoryLoad')) {
+        if ($('#state').val() == 'success') {
+            $('#alertBox').show()
+            $('#alertBox').addClass('success')
+            $('#message').text('El archivo se cargo al arbol exitosamente.')
+        } else if ($('#state').val() == "failed") {
+            $('#alertBox').show()
+            $('#alertBox').addClass('failed')
+            $('#message').text('Ocurrio un error. Verifica que hayas seleccionado el archivo correcto.')
+        }
+    }
+})
