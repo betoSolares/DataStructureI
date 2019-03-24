@@ -164,6 +164,11 @@ nav ul li.icon {
     text-align: center;
 }
 
+.form-complete {
+    display: inline-block;
+    width: 100%;
+}
+
 /** File Chooser **/
 .input-file {
     display: none;
@@ -220,4 +225,214 @@ nav ul li.icon {
 
 .closebtn:hover {
     color: black;
+}
+
+/** Title **/
+.title{
+    margin: 0 auto;
+    text-align: center;
+}
+
+/** Search Box **/
+.searchBox{
+    align-items: stretch;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 30px;
+    position: relative;
+    width: 100%;
+}
+
+.searchBox > .searchInput{
+    flex: 1 1 auto;
+    margin-bottom: 0;
+    position: relative;
+    width: 1%;
+}
+
+.searchBox > .searchInput:focus{
+    z-index: -3;
+}
+
+.searchBox > .searchInput:not(:last-child){
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.searchBox > .searchInput:not(:first-child) {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+}
+
+.searchInput {
+    background-clip: padding-box;
+    border: 1px solid #ffe74c;
+    border-color: #ffe74c !important;
+    border-radius: 4px;
+    display: block;
+    height: 46px !important;
+    line-height: 1.5;
+    padding: 6px 12px;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    width: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .searchInput {
+        transition: none;
+    }
+}
+
+.searchInput::-ms-expand {
+    background-color: transparent;
+    border: 0;
+}
+
+.searchInput:focus {
+    background-color: transparent;
+    border-color: #feeb71;
+    outline: 0;
+}
+
+.searchInput::-webkit-input-placeholder {
+    opacity: 1;
+}
+
+.searchInput::-moz-placeholder {
+    opacity: 1;
+}
+
+.searchInput:-ms-input-placeholder {
+    opacity: 1;
+}
+
+.searchInput::placeholder {
+    opacity: 1;
+}
+
+.searchInput:disabled, .searchInput[readonly] {
+    background-color: #e9ecef;
+    opacity: 1;
+}
+
+select.form-control:focus::-ms-value {
+    background-color: transparent;
+}
+
+select.form-control[size], select.form-control[multiple] {
+    height: auto;
+}
+
+textarea.form-control {
+    height: auto;
+}
+
+.searchButton > .btnSearch {
+    border-radius: 6px;
+    font-size: 18px;
+    height: 46px;
+    line-height: 1.3333333;
+    padding: 10px 16px;
+}
+
+.searchButton{
+    display: table-cell;
+}
+
+.searchButton:not(:first-child):not(:last-child){
+    border-radius: 0;
+}
+
+.searchButton:first-child > .btnSearch,
+.searchButton:last-child > .btnSearch:not(:last-child) {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.searchButton:last-child > .btnSearch,
+.searchButton:first-child > .btnSearch:not(:first-child) {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+}
+
+.searchButton {
+    vertical-align: middle;
+    white-space: nowrap;
+    width: 1%;
+}
+
+.searchButton > .btnSearch {
+    position: relative;
+}
+
+.searchButton > .btnSearch + .btnSearch {
+    margin-left: -1px;
+}
+
+.searchButton > .btnSearch:hover,
+.searchButton > .btnSearch:focus,
+.searchButton > .btnSearch:active {
+    z-index: 2;
+}
+
+.searchButton:first-child > .btnSearch{
+    margin-right: -1px;
+}
+
+.searchButton:last-child > .btnSearch {
+    margin-left: -1px;
+    z-index: 2;
+}
+
+.searchBox .searchButton {
+    width: auto;
+}
+
+.btnSearch {
+    -moz-user-select: none;
+    -ms-touch-action: manipulation;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    background-color: #ffe74c !important; 
+    background-image: none;
+    border: 1px solid transparent;
+    border-color: #ffe74c !important;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857143;
+    margin-bottom: 0;
+    padding: 6px 12px;
+    text-align: center;
+    touch-action: manipulation;
+    user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.btnSearch:focus,
+.btnSearch:active:focus,
+.btnSearch.active:focus,
+.btnSearch.focus,
+.btnSearch:active.focus,
+.btnSearch.active.focus {
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px;
+}
+
+.btnSearch:hover,
+.btnSearch:focus,
+.btnSearch.focus {
+    color: #000000;
+    text-decoration: none;
+}
+
+.btnSearch:active,
+.btnSearch.active {
+    -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+    background-image: none;
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+    outline: 0;
 }
