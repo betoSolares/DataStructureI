@@ -4,15 +4,16 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     @Styles.Render("~/bundles/style")
 </head>
 <body class="@ViewBag.BodyClass">
     <nav class="nav-show">
         <div class="container">
             <ul class="links">
-                <li class="logo"><a href="#">Tu Salud</a></li>
+                <li class="logo"><a href="">Tu Salud</a></li>
                 <li>@Html.ActionLink("Cargar Inventario", "LoadInventory", "Inventory")</li>
-                <li>@Html.ActionLink("###", "#", "Inventory")</li>
+                <li>@Html.ActionLink("Buscar Productos", "SearchProduct", "Inventory")</li>
                 <li>@Html.ActionLink("###", "#", "Inventory")</li>
                 <li>@Html.ActionLink("###", "#", "Inventory")</li>
                 <li>@Html.ActionLink("###", "#", "Inventory")</li>
