@@ -21,5 +21,18 @@
             </div>
         </form>
     </div>
+    if (TempData["state"].Equals("searched")) {
+        if(ViewBag.Products.Count > 0) {
+            <ul id="products" class="productList">
+                @foreach (var product in ViewBag.Products) {
+                    <li id="product" class="product">
+                        <span>@product.name</span>
+                        <span> - </span>
+                        <span>$@product.price</span>
+                    </li>
+                }
+            </ul>
+        }
+    }
 }
 
