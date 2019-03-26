@@ -4,7 +4,7 @@ $(document).ready(function () {
         if ($('#empty').val() == 'empty') {
             $input = $('<input type="file" name="PathFile" class="input-file" id="PathFile" accept=".csv" />')
             $input.appendTo($('#form'))
-            $file = $('<label for="PathFile" class="file">Select a file</label>')
+            $file = $('<label for="PathFile" class="file">Selecciona un archivo</label>')
             $file.appendTo($('#form'))
             $button = $('<input type="submit" class="button-primary btn" name="formAction" value="Cargar Inventario" />')
             $button.appendTo($('#form'))
@@ -28,4 +28,11 @@ $(document).ready(function () {
             $('#message').text('Ocurrio un error. Verifica que hayas seleccionado el archivo correcto.')
         }
     }
+})
+
+// Show product information
+$('.product').on('click', function () {
+    text = $(this).children().text()
+    dashIndex = text.indexOf('-')
+    name = text.substring(0, dashIndex).trim()
 })
