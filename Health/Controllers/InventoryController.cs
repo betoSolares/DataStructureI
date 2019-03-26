@@ -44,7 +44,7 @@ namespace Health.Controllers {
             return View();
         }
 
-        // Get the search bar
+        // Get the search view
         [HttpGet]
         public ActionResult SearchProduct() {
             return View();

@@ -10,7 +10,7 @@ namespace Health {
             routes.MapRoute(
                 name: "LoadInventory",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Inventory", action = "LoadInventory", id = UrlParameter.Optional });
+                defaults: new { controller = "Inventory", action = "InventoryLoad", id = UrlParameter.Optional });
         }
 
     }
