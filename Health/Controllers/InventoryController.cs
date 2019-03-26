@@ -48,7 +48,11 @@ namespace Health.Controllers {
         // Get the search view
         [HttpGet]
         public ActionResult SearchProduct() {
-            TempData["state"] = "noSearched";
+            if (tree.IsEmpty()) {
+                TempData["state"] = "empty";
+            } else {
+                TempData["state"] = "noSearched";
+            }
             return View();
         }
 

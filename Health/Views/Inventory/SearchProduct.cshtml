@@ -5,26 +5,21 @@
 }
 
 <h2 class="title">Buscar Productos</h2>
-<div class="container center">
-    <form class="form-complete" id="form" action=@Url.Action("SearchProduct") method="post">
-        <div class="searchBox">
-            <input type="text" class="searchInput" id="searchInput" name="search"  placeholder="¿Que buscas?" />
-            <div class="searchButton">
-                <button type="submit" class="btnSearch">
-                    <i class="fas fa-search"></i>
-                </button>
+
+@if (TempData["state"].Equals("empty")) {
+    <h6 class="title" style="padding: 25px">Lo siente. Primero debes de cargar el inventario.</h6>
+} else {
+    <div class="container center">
+        <form class="form-complete" id="form" action=@Url.Action("SearchProduct") method="post">
+            <div class="searchBox">
+                <input type="text" class="searchInput" id="searchInput" name="search" placeholder="¿Que buscas?" />
+                <div class="searchButton">
+                    <button type="submit" class="btnSearch">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
             </div>
-        </div>
-    </form>
-</div>
-@if (TempData["state"].Equals("searched")) {
-    if(ViewBag.Products.Count > 0) {
-        <div>
-            @foreach(var product in ViewBag.Products) {
-                <p>@product.name</p>
-            }
-        </div>
-    } else {
-        <p>Empty</p>
-    }
+        </form>
+    </div>
 }
+
