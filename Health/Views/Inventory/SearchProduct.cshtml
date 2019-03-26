@@ -17,3 +17,14 @@
         </div>
     </form>
 </div>
+@if (TempData["state"].Equals("searched")) {
+    if(ViewBag.Products.Count > 0) {
+        <div>
+            @foreach(var product in ViewBag.Products) {
+                <p>@product.name</p>
+            }
+        </div>
+    } else {
+        <p>Empty</p>
+    }
+}

@@ -2,6 +2,7 @@
 using Health.Models;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Web;
@@ -47,6 +48,15 @@ namespace Health.Controllers {
         // Get the search view
         [HttpGet]
         public ActionResult SearchProduct() {
+            TempData["state"] = "noSearched";
+            return View();
+        }
+
+        // Return a list with the elements
+        [HttpPost]
+        public ActionResult SearchProduct(string search) {
+            ViewBag.Products = ProductsList(search);
+            TempData["state"] = "searched";
             return View();
         }
         
@@ -102,6 +112,21 @@ namespace Health.Controllers {
             string path = Path.Combine(Server.MapPath("~/App_Data/Files/") + "tree.json");
             System.IO.File.WriteAllText(path, JsonConvert.SerializeObject(tree.ToList(), Formatting.Indented));
             return File(System.IO.File.ReadAllBytes(path), "application/octet-stream", "tree.json");
+        }
+
+        /**
+         * @desc: Verify if there is an element in the tree with the same name.
+         * @param: string name - The name to search.
+         * @return: List<Meds> - The list with the elements.
+        **/
+        private List<Meds> ProductsList(string name) {
+            List<Meds> meds = new List<Meds>();
+            foreach(var element in tree.ToList()) {
+                if (element.name.ToLower().Contains(name.ToLower())) {
+                    meds.Add(element);
+                }
+            }
+            return meds;
         }
 
     }
