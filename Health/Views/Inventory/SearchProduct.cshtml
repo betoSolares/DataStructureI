@@ -24,13 +24,10 @@ else
             </div>
         </form>
     </div>
-    if (TempData["state"].Equals("searched"))
-    {
-        if (ViewBag.Products.Count > 0)
-        {
+    if (TempData["state"].Equals("searched")) {
+        if (ViewBag.Products.Count > 0) {
             <ul id="products" class="productList">
-                @foreach (var product in ViewBag.Products)
-                {
+                @foreach (var product in ViewBag.Products) {
                     <li id="product" class="product">
                         <span>@product.name</span>
                         <span> - </span>
@@ -40,12 +37,25 @@ else
             </ul>
             <div class="productInfo" id="productInfo">
                 <div class="info">
-                    <span class="closebtn closeInfo" id="closeInfo">&times;</span>
+                    <div class="boxHeader">
+                        <span class="closebtn closeInfo" id="closeInfo">&times;</span>
+                    </div>
+                    <div class="boxBody">
+                        <p id="name"><strong>Nombre:</strong> </p>
+                        <p id="description"><strong>Descripción:</strong> </p>
+                        <p id="production"><strong>Productor:</strong> </p>
+                        <p id="price"><strong>Precio:</strong> $</p>
+                    </div>
+                    <div class="boxFooter">
+                        <input type="number" class="textbox" name="quantity" min="1" value="1" required style="display:inline-block" />
+                        <button type="submit" class="button-primary btn" id="addCart">
+                            Agregar al carro de compras <i class="fas fa-cart-plus"></i>
+                        </button>
+                        <button type="submit" class="button-primary btn" id="download">Descargar Producto</button>
+                    </div>
                 </div>
             </div>
-        }
-        else
-        {
+        } else {
             <div class="center">
                 <i class="far fa-sad-tear" style="font-size: 200px"></i>
                 <h5>Lo siento, no encontramos ningun resulatdo.</h5>

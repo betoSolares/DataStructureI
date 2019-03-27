@@ -169,6 +169,15 @@ nav ul li.icon {
     width: 100%;
 }
 
+/** TextBox **/
+.textbox {
+    display: block;
+}
+
+.textbox:focus {
+    border-color: #feeb71 !important;
+}
+
 /** File Chooser **/
 .input-file {
     display: none;
@@ -483,7 +492,7 @@ textarea.form-control {
     animation-name: productOpen;
     animation-duration: 0.8s;
     background-color: rgba(0, 0, 0, 0.5);
-    display: none;
+    /*display: none;*/
     height: 100%;
     left: 0;
     overflow: auto;
@@ -501,7 +510,7 @@ textarea.form-control {
 .info {
     background-color: #f4f4f4;
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.3), 0 7px 20px 0 rgba(0, 0, 0, 0.27);
-    margin: 20% auto;
+    margin: 10% auto;
     padding: 20px;
     width: 70%;
 }
@@ -509,4 +518,18 @@ textarea.form-control {
 .closeInfo{
     color: #cccccc;
     font-size: 30px;
+}
+
+.boxHeader{
+    margin: 5px;
+}
+
+.boxBody{
+    margin: 10px;
+    padding: 10px;
+}
+
+.boxFooter {
+    margin: 10px;
+    padding: 10px;
 }
