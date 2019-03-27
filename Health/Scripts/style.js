@@ -65,3 +65,14 @@ $(document).ready(function () {
 $('#closebtn').click(function () {
     $('#alertBox').hide()
 })
+
+// Close the product box
+$('#closeInfo').click(function () {
+    $('#productInfo').hide()
+})
+
+$(window).click(function (event) {
+    if ($(event.target).hasClass('productInfo')) {
+        $('#productInfo').hide()
+    }
+})

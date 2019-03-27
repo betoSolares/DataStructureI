@@ -14,7 +14,7 @@
 nav {
     position: fixed;
     width: 100%;
-    z-index: 10000;
+    z-index: 1;
     background-color: #ffe74c;
     transition: top 0.2s ease-in-out;
 }
@@ -476,4 +476,37 @@ textarea.form-control {
 .productList .product span:nth-child(3) {
     text-align: right;
     width: 30%;
+}
+
+/** Product Box Information **/
+.productInfo {
+    animation-name: productOpen;
+    animation-duration: 0.8s;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    height: 100%;
+    left: 0;
+    overflow: auto;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 3;
+}
+
+@keyframes productOpen{
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.info {
+    background-color: #f4f4f4;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.3), 0 7px 20px 0 rgba(0, 0, 0, 0.27);
+    margin: 20% auto;
+    padding: 20px;
+    width: 70%;
+}
+
+.closeInfo{
+    color: #cccccc;
+    font-size: 30px;
 }

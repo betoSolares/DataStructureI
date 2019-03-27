@@ -6,9 +6,12 @@
 
 <h2 class="title">Buscar Productos</h2>
 
-@if (TempData["state"].Equals("empty")) {
+@if (TempData["state"].Equals("empty"))
+{
     <h6 class="title" style="padding: 25px">Lo siente. Primero debes de cargar el inventario.</h6>
-} else {
+}
+else
+{
     <div class="container center">
         <form class="form-complete" id="form" action=@Url.Action("SearchProduct") method="post">
             <div class="searchBox">
@@ -21,10 +24,13 @@
             </div>
         </form>
     </div>
-    if (TempData["state"].Equals("searched")) {
-        if(ViewBag.Products.Count > 0) {
+    if (TempData["state"].Equals("searched"))
+    {
+        if (ViewBag.Products.Count > 0)
+        {
             <ul id="products" class="productList">
-                @foreach (var product in ViewBag.Products) {
+                @foreach (var product in ViewBag.Products)
+                {
                     <li id="product" class="product">
                         <span>@product.name</span>
                         <span> - </span>
@@ -32,7 +38,14 @@
                     </li>
                 }
             </ul>
-        } else {
+            <div class="productInfo" id="productInfo">
+                <div class="info">
+                    <span class="closebtn closeInfo" id="closeInfo">&times;</span>
+                </div>
+            </div>
+        }
+        else
+        {
             <div class="center">
                 <i class="far fa-sad-tear" style="font-size: 200px"></i>
                 <h5>Lo siento, no encontramos ningun resulatdo.</h5>
