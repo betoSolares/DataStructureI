@@ -64,6 +64,12 @@ namespace Health.Controllers {
             return View();
         }
         
+        // Return JSON file with the information of the product
+        public JsonResult ProductInfo(string name) {
+            Meds product = tree.Find(name);
+            return Json(new { name = product.name, description = product.description, production = product.production, price = product.price, stock = product.stock }, JsonRequestBehavior.AllowGet);
+        }
+
         /**
          * @desc: Verify if there is a file and load to the tree the elements.
          * @param: HttpPostedFileBase fileUpload - the file to upload.
