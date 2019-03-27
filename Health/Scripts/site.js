@@ -35,4 +35,12 @@ $('.product').on('click', function () {
     text = $(this).children().text()
     dashIndex = text.indexOf('-')
     name = text.substring(0, dashIndex).trim()
+    GetData(name)
 })
+
+// Get the information from the server
+function GetData(param) {
+    $.get('/Inventory/ProductInfo', { name: param }, function (data) {
+
+    })
+}
