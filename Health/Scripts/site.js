@@ -32,9 +32,7 @@ $(document).ready(function () {
 
 // Show product information
 $('.product').on('click', function () {
-    text = $(this).children().text()
-    dashIndex = text.indexOf('-')
-    name = text.substring(0, dashIndex).trim()
+    name = $(this).find('span:first').text()
     GetData(name)
 })
 
