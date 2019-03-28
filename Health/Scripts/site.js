@@ -46,5 +46,6 @@ function GetData(param) {
         $('#description').text("Descripción: " + data.description)
         $('#production').text("Productor: " + data.production)
         $('#price').text("Precio: $" + data.price)
+        $('#quantity').attr({ "max" : data.stock })
     })
 }
