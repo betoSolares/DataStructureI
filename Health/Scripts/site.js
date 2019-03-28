@@ -41,6 +41,10 @@ $('.product').on('click', function () {
 // Get the information from the server
 function GetData(param) {
     $.get('/Inventory/ProductInfo', { name: param }, function (data) {
-
+        $('#productInfo').show()
+        $('#name').text("Nombre: " + data.name)
+        $('#description').text("Descripción: " + data.description)
+        $('#production').text("Productor: " + data.production)
+        $('#price').text("Precio: $" + data.price)
     })
 }
