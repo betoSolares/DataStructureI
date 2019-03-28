@@ -70,6 +70,13 @@ namespace Health.Controllers {
             return Json(new { name = product.name, description = product.description, production = product.production, price = product.price, stock = product.stock }, JsonRequestBehavior.AllowGet);
         }
 
+        // Serialize the product to a JSON and download it.
+        public ActionResult DownloadProduct(string name) {
+            string path = Path.Combine(Server.MapPath("~/App_Data/Files/") + name + ".json");
+            System.IO.File.WriteAllText(path, JsonConvert.SerializeObject(tree.Find(name), Formatting.Indented));
+            return File(System.IO.File.ReadAllBytes(path), "application/octet-stream", name + ".json");
+        }
+
         /**
          * @desc: Verify if there is a file and load to the tree the elements.
          * @param: HttpPostedFileBase fileUpload - the file to upload.
