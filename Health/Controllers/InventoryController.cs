@@ -15,6 +15,9 @@ namespace Health.Controllers {
         // Tree for the meds
         private static BST<Meds, string> tree = new BST<Meds, string>();
 
+        // Shop cart list
+        private static List<Meds> shopCart = new List<Meds>();
+
         // Return the main view
         [HttpGet]
         public ActionResult InventoryLoad() {
@@ -78,6 +81,13 @@ namespace Health.Controllers {
             string path = Path.Combine(Server.MapPath("~/App_Data/Files/") + fileName);
             System.IO.File.WriteAllText(path, JsonConvert.SerializeObject(tree.Find(file), Formatting.Indented));
             return File(System.IO.File.ReadAllBytes(path), "application/octet-stream", fileName);
+        }
+
+        // Add the product to the shop cart
+        [HttpPost]
+        public JsonResult AddProductCart(string name, int quantity) {
+            int maxProducts = AddCart(name, quantity);
+            return Json(new { max = maxProducts }, JsonRequestBehavior.AllowGet);
         }
 
         /**
@@ -147,6 +157,20 @@ namespace Health.Controllers {
                 }
             }
             return meds;
+        }
+
+        /**
+         * @desc: Add a new product to the shop cart and return the items remanings.
+         * @param: string name - The name of the product.
+         * @param: int quantity - The number of elements to insert in the shop cart.
+         * @return: int - The items remanings in the tree.
+        **/
+        private int AddCart(string name, int quantity) {
+            Meds product = tree.Find(name);
+            shopCart.Add(new Meds { name = name, stock = quantity });
+            product.stock = product.stock - quantity;
+            tree.Update(product.name, product);
+            return product.stock;
         }
 
     }
