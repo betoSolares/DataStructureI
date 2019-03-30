@@ -47,3 +47,11 @@ function GetData(param) {
         $('#quantity').attr({ "max" : data.stock })
     })
 }
+
+// Download the product state
+$('#download').click(function () {
+    text = $('#name').text()
+    name = text.slice(7, text.length).trim()
+    location.href = '/Inventory/DownloadProduct/?file=' + name
+})
+
