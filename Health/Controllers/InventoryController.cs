@@ -43,7 +43,7 @@ namespace Health.Controllers {
                         ViewBag.Empty = "noEmpty";
                     break;
                 case "Descargar Inventario":
-                    return DownloadTree();
+                    return DownloadFile("tree");
             }
             return View();
         }
@@ -67,7 +67,7 @@ namespace Health.Controllers {
             return View();
         }
         
-        // Return JSON file with the information of the product
+        // Return JSON format data with the information of the product
         [HttpGet]
         public JsonResult ProductInfo(string name) {
             Meds product = tree.Find(name);
@@ -77,10 +77,7 @@ namespace Health.Controllers {
         // Serialize the product to a JSON and download it.
         [HttpGet]
         public ActionResult DownloadProduct(string file) {
-            string fileName = file + ".json";
-            string path = Path.Combine(Server.MapPath("~/App_Data/Files/") + fileName);
-            System.IO.File.WriteAllText(path, JsonConvert.SerializeObject(tree.Find(file), Formatting.Indented));
-            return File(System.IO.File.ReadAllBytes(path), "application/octet-stream", fileName);
+            return DownloadFile(file);
         }
 
         // Add the product to the shop cart
@@ -136,12 +133,16 @@ namespace Health.Controllers {
             }
             return valid;
         }
-
-        // Serialize the tree to a JSON and download it.
-        private ActionResult DownloadTree() {
-            string path = Path.Combine(Server.MapPath("~/App_Data/Files/") + "tree.json");
-            System.IO.File.WriteAllText(path, JsonConvert.SerializeObject(tree.ToList(), Formatting.Indented));
-            return File(System.IO.File.ReadAllBytes(path), "application/octet-stream", "tree.json");
+        
+        // Method that downloads the json files
+        private ActionResult DownloadFile(string name) {
+            string fileName = name + ".json";
+            string path = Path.Combine(Server.MapPath("~/App_Data/Files/") + fileName);
+            if (name.Equals("tree"))
+                System.IO.File.WriteAllText(path, JsonConvert.SerializeObject(tree.ToList(), Formatting.Indented));
+            else
+                System.IO.File.WriteAllText(path, JsonConvert.SerializeObject(tree.Find(name), Formatting.Indented));
+            return File(System.IO.File.ReadAllBytes(path), "application/octet-stream", fileName);
         }
 
         /**
