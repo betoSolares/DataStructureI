@@ -55,3 +55,18 @@ $('#download').click(function () {
     location.href = '/Inventory/DownloadProduct/?file=' + name
 })
 
+// Add the product to the shop cart
+$('#addCart').click(function () {
+    text = $('#name').text()
+    name = text.slice(7, text.length).trim()
+    quantity = parseInt($('#quantity').val(), 10)
+    maxValue = parseInt($('#quantity').attr('max'), 10)
+    if (quantity > 0 && quantity <= maxValue) {
+        $.post('/Inventory/AddProductCart', { name: name, quantity: quantity }, function (data) {
+            $('#quantity').attr({ "max": data.max })
+            // Success message
+        })
+    } else {
+        // Error message
+    }
+})
