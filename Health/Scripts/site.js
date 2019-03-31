@@ -64,9 +64,21 @@ $('#addCart').click(function () {
     if (quantity > 0 && quantity <= maxValue) {
         $.post('/Inventory/AddProductCart', { name: name, quantity: quantity }, function (data) {
             $('#quantity').attr({ "max": data.max })
-            // Success message
+            CartMessage('success')
         })
     } else {
-        // Error message
+        CartMessage('failed')
     }
 })
+
+function CartMessage(state) {
+    if (state == 'success') {
+        $('#alertBox').show()
+        $('#alertBox').attr('class', 'success')
+        $('#message').text('El producto se agrego con exito al carrito de compras.')
+    } else if (state == "failed") {
+        $('#alertBox').show()
+        $('#alertBox').attr('class', 'failed')
+        $('#message').text('Hubo un error. Verifica que la cantidad de productos sea la correcta.')
+    }
+}

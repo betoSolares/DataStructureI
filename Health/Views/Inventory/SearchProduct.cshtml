@@ -24,10 +24,13 @@ else
             </div>
         </form>
     </div>
-    if (TempData["state"].Equals("searched")) {
-        if (ViewBag.Products.Count > 0) {
+    if (TempData["state"].Equals("searched"))
+    {
+        if (ViewBag.Products.Count > 0)
+        {
             <ul id="products" class="productList">
-                @foreach (var product in ViewBag.Products) {
+                @foreach (var product in ViewBag.Products)
+                {
                     <li id="product" class="product">
                         <span>@product.name</span>
                         <span> - </span>
@@ -36,6 +39,10 @@ else
                 }
             </ul>
             <div class="productInfo" id="productInfo">
+                <div id="alertBox" class="alertBox" style="display: none">
+                    <span class="closebtn" id="closebtn">&times;</span>
+                    <p id="message"></p>
+                </div>
                 <div class="info">
                     <div class="boxHeader">
                         <span class="closebtn closeInfo" id="closeInfo">&times;</span>
@@ -55,7 +62,9 @@ else
                     </div>
                 </div>
             </div>
-        } else {
+        }
+        else
+        {
             <div class="center">
                 <i class="far fa-sad-tear" style="font-size: 200px"></i>
                 <h5>Lo siento, no encontramos ningun resulatdo.</h5>
