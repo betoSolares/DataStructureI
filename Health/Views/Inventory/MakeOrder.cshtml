@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.BodyClass = "MakeOrder";
+    ViewBag.Title = "Realizar compra";
+    Layout = "~/Views/Partials/Layout.cshtml";
+}
+
+<div id="alertBox" class="alertBox" style="display: none">
+    <span class="closebtn" id="closebtn">&times;</span>
+    <p id="message"></p>
+</div>
+<h2 class="title">Realizar Compra</h2>
+<div class="twelve columns center" style="padding: 25px">
+    <form class="form" id="form" action=@Url.Action("MakeOrder") method="post">
+        <input type="text" id="name" name="name" placeholder="Nombre"/>
+        <input type="text" id="address" name="address" placeholder="Dirección" />
+        <input type="text" id="nit" name="nit" placeholder="NIT" />
+    </form>
+</div>

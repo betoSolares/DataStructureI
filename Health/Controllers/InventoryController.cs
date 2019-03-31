@@ -94,6 +94,12 @@ namespace Health.Controllers {
             return Json(new { max = maxProducts }, JsonRequestBehavior.AllowGet);
         }
 
+        // Return the view for make the order.
+        [HttpGet]
+        public ActionResult MakeOrder() {
+            return View();
+        }
+
         /**
          * @desc: Verify if there is a file and load to the tree the elements.
          * @param: HttpPostedFileBase fileUpload - the file to upload.

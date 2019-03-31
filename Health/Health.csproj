@@ -125,6 +125,7 @@
     <Content Include="Views\Partials\Layout.cshtml" />
     <Content Include="Views\Inventory\InventoryLoad.cshtml" />
     <Content Include="Views\Inventory\SearchProduct.cshtml" />
+    <Content Include="Views\Inventory\MakeOrder.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
