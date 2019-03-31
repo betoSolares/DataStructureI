@@ -9,10 +9,20 @@
     <p id="message"></p>
 </div>
 <h2 class="title">Realizar Compra</h2>
-<div class="twelve columns center" style="padding: 25px">
-    <form class="form" id="form" action=@Url.Action("MakeOrder") method="post">
-        <input type="text" id="name" name="name" placeholder="Nombre"/>
-        <input type="text" id="address" name="address" placeholder="Dirección" />
-        <input type="text" id="nit" name="nit" placeholder="NIT" />
-    </form>
-</div>
+@if (TempData["state"].Equals("empty")) {
+    <h6 class="title" style="padding: 25px">Lo siente. Primero debes de cargar el inventario.</h6>
+} else {
+    if (TempData["state"].Equals("noCart")) {
+        <h6 class="title" style="padding: 25px">Debes de haber incluido algun producto en el carrito de compras.</h6>
+    } else {
+        <div class="twelve columns center" style="padding: 25px">
+            <form class="form" id="form" action=@Url.Action("MakeOrder") method="post">
+                <input type="text" id="name" name="name" placeholder="Nombre" class="textbox" required />
+                <input type="text" id="address" name="address" placeholder="Dirección" class="textbox" required />
+                <input type="text" id="nit" name="nit" placeholder="NIT" class="textbox" required />
+                <!-- Products list and total -->
+                <input type="submit" class="button-primary btn" name="Submit" value="Realizar Compra" />
+            </form>
+        </div>
+    }
+}
