@@ -18,6 +18,9 @@ namespace Health.Controllers {
         // Shop cart list
         private static List<Meds> shopCart = new List<Meds>();
 
+        // Removed products list
+        private static List<Meds> removedProducts = new List<Meds>();
+
         // Return the main view
         [HttpGet]
         public ActionResult InventoryLoad() {
@@ -175,8 +178,21 @@ namespace Health.Controllers {
                 shopCart.Add(new Meds { name = name, stock = quantity });
             }
             product.stock = product.stock - quantity;
-            tree.Update(product.name, product);
+            ProductUpdate(product);
             return product.stock;
+        }
+
+        /**
+         * @desc: Verify if the product has to be deleted of the tree.
+         * @param: Meds product - The product to verify.
+        **/
+        private void ProductUpdate(Meds product) {
+            if (product.stock == 0) {
+                removedProducts.Add(product);
+                tree.Remove(product.name);
+            } else {
+                tree.Update(product.name, product);
+            }
         }
 
     }
