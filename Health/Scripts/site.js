@@ -40,6 +40,9 @@ $('.product').on('click', function () {
 function GetData(param) {
     $.get('/Inventory/ProductInfo', { name: param }, function (data) {
         $('#productInfo').show()
+        if ($('#alertBox').show()) {
+            $('#alertBox').hide()
+        }
         $('#name').text("Nombre: " + data.name)
         $('#description').text("Descripción: " + data.description)
         $('#production').text("Productor: " + data.production)
