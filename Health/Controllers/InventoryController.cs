@@ -168,7 +168,12 @@ namespace Health.Controllers {
         **/
         private int AddCart(string name, int quantity) {
             Meds product = tree.Find(name);
-            shopCart.Add(new Meds { name = name, stock = quantity });
+            int index = shopCart.FindIndex(x => x.name == name);
+            if(index >= 0) {
+                shopCart[index].stock += quantity;
+            } else {
+                shopCart.Add(new Meds { name = name, stock = quantity });
+            }
             product.stock = product.stock - quantity;
             tree.Update(product.name, product);
             return product.stock;
