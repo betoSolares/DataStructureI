@@ -73,8 +73,12 @@ namespace Health.Controllers {
         // Return JSON format data with the information of the product
         [HttpGet]
         public JsonResult ProductInfo(string name) {
-            Meds product = tree.Find(name);
-            return Json(new { name = product.name, description = product.description, production = product.production, price = product.price, stock = product.stock }, JsonRequestBehavior.AllowGet);
+            try {
+                Meds product = tree.Find(name);
+                return Json(new { name = product.name, description = product.description, production = product.production, price = product.price, stock = product.stock }, JsonRequestBehavior.AllowGet);
+            } catch (Exception) {
+                return Json(new { name = "null"}, JsonRequestBehavior.AllowGet);
+            }
         }
         
         // Serialize the product to a JSON and download it.

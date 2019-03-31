@@ -43,11 +43,18 @@ function GetData(param) {
         if ($('#alertBox').show()) {
             $('#alertBox').hide()
         }
-        $('#name').text("Nombre: " + data.name)
-        $('#description').text("Descripción: " + data.description)
-        $('#production').text("Productor: " + data.production)
-        $('#price').text("Precio: $" + data.price)
-        $('#quantity').attr({ "max" : data.stock })
+        if (data.name != 'null') {
+            $('#name').text("Nombre: " + data.name)
+            $('#description').text("Descripción: " + data.description)
+            $('#production').text("Productor: " + data.production)
+            $('#price').text("Precio: $" + data.price)
+            $('#quantity').attr({ "max": data.stock })
+        } else {
+            $('#alertBox').show()
+            $('#alertBox').attr('class', 'failed')
+            $('#message').text('El producto ya no existe. Toca en cualquier parte de la pantalla para salir.')
+            $('.info').hide()
+        }
     })
 }
 
