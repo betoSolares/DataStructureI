@@ -2,6 +2,7 @@
     ViewBag.BodyClass = "MakeOrder";
     ViewBag.Title = "Realizar compra";
     Layout = "~/Views/Partials/Layout.cshtml";
+    float total = 0;
 }
 
 <div id="alertBox" class="alertBox" style="display: none">
@@ -34,8 +35,10 @@
                         <span> - </span>
                         <button type="submit" class="button-primary btn" id="removePartial">Eliminar</button>
                     </li>
+                    total += product.price;
                 }
                 </ul>
+                <p id="total">El total de la compra es: $@total</p>
                 <input type="submit" class="button-primary btn" name="Submit" value="Realizar Compra" />
             </form>
         </div>

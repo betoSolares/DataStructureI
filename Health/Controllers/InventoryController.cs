@@ -191,10 +191,12 @@ namespace Health.Controllers {
         private int AddCart(string name, int quantity) {
             Meds product = tree.Find(name);
             int index = shopCart.FindIndex(x => x.name == name);
+            float total = product.price * quantity;
             if(index >= 0) {
                 shopCart[index].stock += quantity;
+                shopCart[index].price += total;
             } else {
-                shopCart.Add(new Meds { name = name, stock = quantity });
+                shopCart.Add(new Meds { name = name, stock = quantity, price = total });
             }
             product.stock = product.stock - quantity;
             ProductUpdate(product);
