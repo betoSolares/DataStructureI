@@ -97,12 +97,14 @@ namespace Health.Controllers {
         // Return the view for make the order.
         [HttpGet]
         public ActionResult MakeOrder() {
+            ViewBag.products = null;
             if (tree.IsEmpty()) {
                 TempData["state"] = "empty";
             } else if(shopCart.Count == 0){
                 TempData["state"] = "noCart";
             } else {
                 TempData["state"] = "makeOrder";
+                ViewBag.products = shopCart;
             }
             return View();
         }
