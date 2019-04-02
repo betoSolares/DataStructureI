@@ -533,3 +533,59 @@ textarea.form-control {
     margin: 10px;
     padding: 10px;
 }
+
+/** Orders product list **/
+.ordersList{
+    background: #fdfdfd;
+    border-radius: 5px;
+    box-shadow: inset 0 0 0 15px #fdfdfd;
+    box-sizing: border-box;
+    margin: 2px auto 0;
+    overflow: hidden;
+    padding: 5px;
+    width: 75%;
+}
+
+.ordersList .product {
+    background: #fefefe;
+    display: flex;
+    margin: 5px 0;
+    padding: 10px 20px;
+    transition: .5s;
+}
+
+.ordersList .product:hover {
+    background: #f4f4f4;
+    cursor: pointer;
+    transform: scale(1.025);
+}
+
+.ordersList .product span:nth-child(1) {
+    text-align: left;
+    width: 25%;
+}
+
+.ordersList .product span:nth-child(2),
+.ordersList .product span:nth-child(4),
+.ordersList .product span:nth-child(6),
+.ordersList .product span:nth-child(9) {
+    text-align: center;
+    width: 4%;
+}
+
+.ordersList .product span:nth-child(3),
+.ordersList .product span:nth-child(5) {
+    text-align: center;
+    width: 9%;
+}
+
+.ordersList .product input:nth-child(7) {
+    text-align: left;
+    width: 10%;
+}
+
+.ordersList .product button:nth-child(8),
+.ordersList .product button:nth-child(10) {
+    text-align: center;
+    width: 15%;
+}

@@ -20,12 +20,19 @@
                 <center><input type="text" id="name" name="name" placeholder="Nombre" class="textbox" required style="width: 75%" /></center>
                 <center><input type="text" id="address" name="address" placeholder="Dirección" class="textbox" required style="width: 75%" /></center>
                 <center><input type="text" id="nit" name="nit" placeholder="NIT" class="textbox" required style="width: 75%" /></center>
-                <ul id="products" class="productList">
+                <ul id="products" class="ordersList">
                 @foreach (var product in ViewBag.Products) {
                     <li id="product" class="product">
                         <span>@product.name</span>
                         <span> - </span>
+                        <span>@product.stock</span>
+                        <span> - </span>
                         <span>$@product.price</span>
+                        <span> - </span>
+                        <input type="number" value="1" min="0" max=@product.stock class="textbox" id="numberRemove" />
+                        <button type="submit" class="button-primary btn" id="removePartial">Quitar</button>
+                        <span> - </span>
+                        <button type="submit" class="button-primary btn" id="removePartial">Eliminar</button>
                     </li>
                 }
                 </ul>
