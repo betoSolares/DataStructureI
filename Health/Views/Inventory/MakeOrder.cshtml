@@ -10,37 +10,64 @@
     <p id="message"></p>
 </div>
 <h2 class="title">Realizar Compra</h2>
-@if (TempData["state"].Equals("empty")) {
+@if (TempData["state"].Equals("empty"))
+{
     <h6 class="title" style="padding: 25px">Lo siente. Primero debes de cargar el inventario.</h6>
-} else {
-    if (TempData["state"].Equals("noCart")) {
+}
+else
+{
+    if (TempData["state"].Equals("noCart"))
+    {
         <h6 class="title" style="padding: 25px">Debes de haber incluido algun producto en el carrito de compras.</h6>
-    } else {
+    }
+    else
+    {
         <div class="twelve columns" style="padding: 25px">
             <form class="form center" id="form" action=@Url.Action("MakeOrder") method="post" style="width: 100%">
                 <center><input type="text" id="name" name="name" placeholder="Nombre" class="textbox" required style="width: 75%" /></center>
                 <center><input type="text" id="address" name="address" placeholder="Dirección" class="textbox" required style="width: 75%" /></center>
                 <center><input type="text" id="nit" name="nit" placeholder="NIT" class="textbox" required style="width: 75%" /></center>
                 <ul id="products" class="ordersList">
-                @foreach (var product in ViewBag.Products) {
-                    <li id="product" class="product">
-                        <span>@product.name</span>
-                        <span> - </span>
-                        <span>@product.stock</span>
-                        <span> - </span>
-                        <span>$@product.price</span>
-                        <span> - </span>
-                        <input type="number" value="1" min="0" max=@product.stock class="textbox" id="numberRemove" />
-                        <button type="submit" class="button-primary btn" id="removePartial">Quitar</button>
-                        <span> - </span>
-                        <button type="submit" class="button-primary btn" id="removePartial">Eliminar</button>
-                    </li>
-                    total += product.price;
-                }
+                    @foreach (var product in ViewBag.Products)
+                    {
+                        <li id="product" class="product">
+                            <span>@product.name</span>
+                            <span> - </span>
+                            <span>@product.stock</span>
+                            <span> - </span>
+                            <span>$@product.price</span>
+                            <span> - </span>
+                            <input type="number" value="1" min="0" max=@product.stock class="textbox" id="numberRemove" />
+                            <button type="submit" class="button-primary btn" id="removePartial">Quitar</button>
+                            <span> - </span>
+                            <button type="submit" class="button-primary btn" id="removePartial">Eliminar</button>
+                        </li>
+                        total += product.price;
+                    }
                 </ul>
                 <p id="total">El total de la compra es: $@total</p>
                 <input type="submit" class="button-primary btn" name="Submit" value="Realizar Compra" />
             </form>
+        </div>
+        <div class="productInfo" id="productInfo">
+            <div id="alertBox" class="alertBox" style="display: none">
+                <span class="closebtn" id="closebtn">&times;</span>
+                <p id="message"></p>
+            </div>
+            <div class="info">
+                <div class="boxHeader">
+                    <span class="closebtn closeInfo" id="closeInfo">&times;</span>
+                </div>
+                <div class="boxBody">
+                    <p id="name"></p>
+                    <p id="description"></p>
+                    <p id="production"></p>
+                    <p id="price"></p>
+                </div>
+                <div class="boxFooter">
+                    <button type="submit" class="button-primary btn" id="download">Descargar Producto</button>
+                </div>
+            </div>
         </div>
     }
 }
