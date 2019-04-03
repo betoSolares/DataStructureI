@@ -92,3 +92,27 @@ function CartMessage(state) {
         $('#message').text('Hubo un error. Verifica que la cantidad de productos sea la correcta.')
     }
 }
+
+// Messages for the remove product action
+function RemoveMessages(state) {
+    if (state == 'success') {
+        $('#alertBox').show()
+        $('#alertBox').attr('class', 'success')
+        $('#message').text('El producto se elimino de su carrito de compras.')
+    } else if (state == "failed") {
+        $('#alertBox').show()
+        $('#alertBox').attr('class', 'failed')
+        $('#message').text('Hubo un error. Verifica que la cantidad de productos sea la correcta.')
+    }
+}
+
+// Partially remove the product
+$('#removePartial').click(function () {
+    quantity = parseInt($('#numberRemove').val(), 10)
+    maxValue = parseInt($('#quantity').attr('max'), 10)
+    if (quantity > 0 && quantity <= maxValue) {
+        // Make the remove
+    } else {
+        RemoveMessages("failed")
+    }
+})

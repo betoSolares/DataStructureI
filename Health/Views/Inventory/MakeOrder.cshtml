@@ -30,7 +30,7 @@ else
                 <ul id="products" class="ordersList">
                     @foreach (var product in ViewBag.Products)
                     {
-                        <li id="product" class="product">
+                        <li id="product" class="productOrder">
                             <span>@product.name</span>
                             <span> - </span>
                             <span>@product.stock</span>
@@ -50,10 +50,6 @@ else
             </form>
         </div>
         <div class="productInfo" id="productInfo">
-            <div id="alertBox" class="alertBox" style="display: none">
-                <span class="closebtn" id="closebtn">&times;</span>
-                <p id="message"></p>
-            </div>
             <div class="info">
                 <div class="boxHeader">
                     <span class="closebtn closeInfo" id="closeInfo">&times;</span>
