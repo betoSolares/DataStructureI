@@ -31,9 +31,11 @@ $(document).ready(function () {
 })
 
 // Show product information
-$('.product').on('click', function () {
-    name = $(this).find('span:first').text()
-    GetData(name)
+$('.product').on('click', function (e) {
+    if (e.target == this) {
+        name = $(this).find('span:first').text()
+        GetData(name)
+    }
 })
 
 // Get the information from the server

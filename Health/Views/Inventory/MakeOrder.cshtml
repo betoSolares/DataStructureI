@@ -23,29 +23,28 @@ else
     else
     {
         <div class="twelve columns" style="padding: 25px">
+            <ul id="products" class="ordersList">
+                @foreach (var product in ViewBag.Products) {
+                    <li id="product" class="product">
+                        <span>@product.name</span>
+                        <span> - </span>
+                        <span>@product.stock</span>
+                        <span> - </span>
+                        <span>$@product.price</span>
+                        <span> - </span>
+                        <input type="number" value="1" min="0" max=@product.stock class="textbox" id="numberRemove" />
+                        <button type="submit" class="button-primary btn" id="removePartial">Quitar</button>
+                        <span> - </span>
+                        <button type="submit" class="button-primary btn" id="removeComplete">Eliminar</button>
+                    </li>
+                    total += product.price;
+                }
+            </ul>
+            <center><p id="total">El total de la compra es: $@total</p></center>
             <form class="form center" id="form" action=@Url.Action("MakeOrder") method="post" style="width: 100%">
                 <center><input type="text" id="name" name="name" placeholder="Nombre" class="textbox" required style="width: 75%" /></center>
                 <center><input type="text" id="address" name="address" placeholder="Dirección" class="textbox" required style="width: 75%" /></center>
                 <center><input type="text" id="nit" name="nit" placeholder="NIT" class="textbox" required style="width: 75%" /></center>
-                <ul id="products" class="ordersList">
-                    @foreach (var product in ViewBag.Products)
-                    {
-                        <li id="product" class="productOrder">
-                            <span>@product.name</span>
-                            <span> - </span>
-                            <span>@product.stock</span>
-                            <span> - </span>
-                            <span>$@product.price</span>
-                            <span> - </span>
-                            <input type="number" value="1" min="0" max=@product.stock class="textbox" id="numberRemove" />
-                            <button type="submit" class="button-primary btn" id="removePartial">Quitar</button>
-                            <span> - </span>
-                            <button type="submit" class="button-primary btn" id="removePartial">Eliminar</button>
-                        </li>
-                        total += product.price;
-                    }
-                </ul>
-                <p id="total">El total de la compra es: $@total</p>
                 <input type="submit" class="button-primary btn" name="Submit" value="Realizar Compra" />
             </form>
         </div>
