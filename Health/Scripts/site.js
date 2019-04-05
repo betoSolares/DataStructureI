@@ -109,11 +109,18 @@ function RemoveMessages(state) {
 }
 
 // Partially remove the product
-$('#removePartial').click(function () {
+$('.removePartial').on('click', function () {
     quantity = parseInt($('#numberRemove').val(), 10)
-    maxValue = parseInt($('#quantity').attr('max'), 10)
+    maxValue = parseInt($('#numberRemove').attr('max'), 10)
     if (quantity > 0 && quantity <= maxValue) {
-        // Make the remove
+        name = $(this).parent().find('span:first').text()
+        $.post('/Inventory/PartialRemove', { name: name , quantity: quantity }, function (data) {
+            if (data) {
+                console.log('success')
+            } else {
+                RemoveMessages("failed")
+            }
+        })
     } else {
         RemoveMessages("failed")
     }

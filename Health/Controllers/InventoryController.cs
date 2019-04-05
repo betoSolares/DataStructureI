@@ -109,6 +109,12 @@ namespace Health.Controllers {
             return View();
         }
 
+        // Remove a certain amount of product from the shop cart
+        [HttpPost]
+        public JsonResult PartialRemove(string name, int quantity) {
+            return Json(new { data = DeleteCart("partial", name, quantity) }, JsonRequestBehavior.AllowGet);
+        }
+
         /**
          * @desc: Verify if there is a file and load to the tree the elements.
          * @param: HttpPostedFileBase fileUpload - the file to upload.
@@ -214,6 +220,52 @@ namespace Health.Controllers {
             } else {
                 tree.Update(product.name, product);
             }
+        }
+
+        /**
+         * @desc: Remove a product from the shop cart.
+         * @param: string type - Type of the remove (Partial/Total).
+         * @param: string name - The name of the product.
+         * @param: int quantity - The amount of products to remove.
+         * @return: bool - Succes or Failed.
+        **/
+        private bool DeleteCart(string type, string name, int? quantity) {
+            bool value = false;
+            if (type.Equals("partial")) {
+                value = PartialDelete(name, (int)quantity);
+            } else {
+                // Complete Delete
+            }
+            return value;
+        }
+
+        // Partial remove
+        private bool PartialDelete(string name, int quantity) {
+            bool value = false;
+            Meds product = shopCart.Find(x => x.name == name);
+            try {
+                if (product.stock == quantity) {
+                    tree.Find(name).stock += product.stock;
+                    shopCart.Remove(product);
+                } else {
+                    tree.Find(name).stock += quantity;
+                    shopCart.Find(x => x.name == product.name).stock -= quantity;
+                }
+                value = true;
+            } catch (Exception) {
+                Meds newProduct = removedProducts.Find(x => x.name == name);
+                tree.Insert(newProduct.name, newProduct);
+                if (product.stock == quantity) {
+                    tree.Find(product.name).stock += product.stock;
+                    shopCart.Remove(product);
+                } else {
+                    tree.Find(product.name).stock += quantity;
+                    shopCart.Find(x => x.name == name).stock -= quantity;
+                }
+                removedProducts.Remove(newProduct);
+                value = true;
+            }
+            return value;
         }
 
     }
