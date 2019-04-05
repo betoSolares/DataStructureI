@@ -261,6 +261,8 @@ namespace Health.Controllers {
                 } else {
                     tree.Find(name).stock += quantity;
                     shopCart.Find(x => x.name == product.name).stock -= quantity;
+                    float newPrice = tree.Find(name).price * quantity;
+                    shopCart.Find(x => x.name == product.name).price -= newPrice;
                 }
                 value = true;
             } catch (Exception) {
@@ -272,6 +274,8 @@ namespace Health.Controllers {
                 } else {
                     tree.Find(product.name).stock += quantity;
                     shopCart.Find(x => x.name == name).stock -= quantity;
+                    float newPrice = tree.Find(name).price * quantity;
+                    shopCart.Find(x => x.name == product.name).price -= newPrice;
                 }
                 removedProducts.Remove(newProduct);
                 value = true;
