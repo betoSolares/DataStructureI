@@ -121,6 +121,14 @@ namespace Health.Controllers {
             return Json(new { data = DeleteCart("complete", name, null) }, JsonRequestBehavior.AllowGet);
         }
 
+        // Get the information for the order
+        [HttpPost]
+        public ActionResult MakeOrder(string name, string address, string nit) {
+            shopCart.Clear();
+            TempData["state"] = "noCart";
+            return View();
+        }
+
         /**
          * @desc: Verify if there is a file and load to the tree the elements.
          * @param: HttpPostedFileBase fileUpload - the file to upload.
