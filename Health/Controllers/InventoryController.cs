@@ -136,6 +136,17 @@ namespace Health.Controllers {
             return View();
         }
 
+        // Return the view with the products reload
+        [HttpPost]
+        public ActionResult ReloadProducts() {
+            if(removedProducts.Count > 0) {
+                ViewBag.NewProducts = NewProductsList();
+            } else {
+                ViewBag.NewProducts = null;
+            }
+            return View("ReloadTree");
+        }
+
         /**
          * @desc: Verify if there is a file and load to the tree the elements.
          * @param: HttpPostedFileBase fileUpload - the file to upload.
@@ -319,6 +330,18 @@ namespace Health.Controllers {
                 value = true;
             }
             return value;
+        }
+
+        // Create a list with the new products
+        private List<Meds> NewProductsList() {
+            List<Meds> newProducts = new List<Meds>();
+            foreach(var item in removedProducts) {
+                item.stock = new Random().Next(1, 15);
+                newProducts.Add(item);
+                tree.Insert(item.name, item);
+            }
+            removedProducts.Clear();
+            return newProducts;
         }
 
     }
