@@ -129,6 +129,13 @@ namespace Health.Controllers {
             return View();
         }
 
+        // Return the view for the reload tree functionality.
+        [HttpGet]
+        public ActionResult ReloadTree() {
+            ViewBag.NewProducts = null;
+            return View();
+        }
+
         /**
          * @desc: Verify if there is a file and load to the tree the elements.
          * @param: HttpPostedFileBase fileUpload - the file to upload.

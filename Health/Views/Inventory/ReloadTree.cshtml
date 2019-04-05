@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.BodyClass = "ReloadTree";
+    ViewBag.Title = "Recargar Arbol";
+    Layout = "~/Views/Partials/Layout.cshtml";
+}
+
+<h2 class="title">Recargar Arbol</h2>
+@if (ViewBag.NewProducts == null) {
+    <center><button type="submit" class="button-primary btn" id="reloadTree">Recargar productos</button></center>
+} else {
+    <div class="twelve columns" style="padding: 25px">
+        <ul id="products" class="ordersList">
+            @foreach (var product in ViewBag.Products) {
+                <li id="product" class="product">
+                    <span>@product.name</span>
+                    <span> - </span>
+                    <span>@product.stock</span>
+                </li>
+            }
+        </ul>
+    </div>
+    <div class="productInfo" id="productInfo">
+        <div class="info">
+            <div class="boxHeader">
+                <span class="closebtn closeInfo" id="closeInfo">&times;</span>
+            </div>
+            <div class="boxBody">
+                <p id="name"></p>
+                <p id="description"></p>
+                <p id="production"></p>
+                <p id="price"></p>
+            </div>
+        </div>
+    </div>
+}

@@ -126,6 +126,7 @@
     <Content Include="Views\Inventory\InventoryLoad.cshtml" />
     <Content Include="Views\Inventory\SearchProduct.cshtml" />
     <Content Include="Views\Inventory\MakeOrder.cshtml" />
+    <Content Include="Views\Inventory\ReloadTree.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
