@@ -115,6 +115,12 @@ namespace Health.Controllers {
             return Json(new { data = DeleteCart("partial", name, quantity) }, JsonRequestBehavior.AllowGet);
         }
 
+        // Remove a product from the shop cart
+        [HttpPost]
+        public JsonResult CompleteRemove(string name) {
+            return Json(new { data = DeleteCart("complete", name, null) }, JsonRequestBehavior.AllowGet);
+        }
+
         /**
          * @desc: Verify if there is a file and load to the tree the elements.
          * @param: HttpPostedFileBase fileUpload - the file to upload.
@@ -226,7 +232,7 @@ namespace Health.Controllers {
          * @desc: Remove a product from the shop cart.
          * @param: string type - Type of the remove (Partial/Total).
          * @param: string name - The name of the product.
-         * @param: int quantity - The amount of products to remove.
+         * @param: int? quantity - The amount of products to remove(can be null).
          * @return: bool - Succes or Failed.
         **/
         private bool DeleteCart(string type, string name, int? quantity) {
@@ -234,12 +240,17 @@ namespace Health.Controllers {
             if (type.Equals("partial")) {
                 value = PartialDelete(name, (int)quantity);
             } else {
-                // Complete Delete
+                value = CompleteDelete(name);
             }
             return value;
         }
 
-        // Partial remove
+        /**
+         * @desc: Remove the amount of product from the shop cart
+         * @param: string name - Name of the product.
+         * @param: int quantity - The amount of products.
+         * @return: bool value - Success or failed.
+        **/
         private bool PartialDelete(string name, int quantity) {
             bool value = false;
             Meds product = shopCart.Find(x => x.name == name);
@@ -262,6 +273,29 @@ namespace Health.Controllers {
                     tree.Find(product.name).stock += quantity;
                     shopCart.Find(x => x.name == name).stock -= quantity;
                 }
+                removedProducts.Remove(newProduct);
+                value = true;
+            }
+            return value;
+        }
+
+        /**
+         * @desc: Remove the product from the shop cart
+         * @param: string name - Name of the product.
+         * @return: bool value - Success or failed.
+        **/
+        private bool CompleteDelete(string name) {
+            bool value = false;
+            Meds product = shopCart.Find(x => x.name == name);
+            try {
+                tree.Find(product.name).stock += product.stock;
+                shopCart.Remove(product);
+                value = true;
+            } catch (Exception) {
+                Meds newProduct = removedProducts.Find(x => x.name == name);
+                tree.Insert(newProduct.name, newProduct);
+                tree.Find(product.name).stock += product.stock;
+                shopCart.Remove(product);
                 removedProducts.Remove(newProduct);
                 value = true;
             }

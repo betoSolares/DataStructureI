@@ -116,7 +116,7 @@ $('.removePartial').on('click', function () {
         name = $(this).parent().find('span:first').text()
         $.post('/Inventory/PartialRemove', { name: name , quantity: quantity }, function (data) {
             if (data) {
-                console.log('success')
+                location.reload()
             } else {
                 RemoveMessages("failed")
             }
@@ -124,4 +124,16 @@ $('.removePartial').on('click', function () {
     } else {
         RemoveMessages("failed")
     }
+})
+
+
+$('.removeComplete').on('click', function () {
+    name = $(this).parent().find('span:first').text()
+    $.post('/Inventory/CompleteRemove', { name: name }, function (data) {
+        if (data) {
+            location.reload()
+        } else {
+            RemoveMessages("failed")
+        }
+    })
 })
