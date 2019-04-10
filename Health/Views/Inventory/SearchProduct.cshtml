@@ -1,0 +1,75 @@
+﻿@{
+    ViewBag.BodyClass = "SearchProduct";
+    ViewBag.Title = "Buscar Productos";
+    Layout = "~/Views/Partials/Layout.cshtml";
+}
+
+<h2 class="title">Buscar Productos</h2>
+
+@if (TempData["state"].Equals("empty"))
+{
+    <h6 class="title" style="padding: 25px">Lo siente. Primero debes de cargar el inventario.</h6>
+}
+else
+{
+    <div class="container center">
+        <form class="form-complete" id="form" action=@Url.Action("SearchProduct") method="post">
+            <div class="searchBox">
+                <input type="text" class="searchInput" id="searchInput" name="search" placeholder="¿Que buscas?" />
+                <div class="searchButton">
+                    <button type="submit" class="btnSearch">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    if (TempData["state"].Equals("searched"))
+    {
+        if (ViewBag.Products.Count > 0)
+        {
+            <ul id="products" class="productList">
+                @foreach (var product in ViewBag.Products)
+                {
+                    <li id="product" class="product">
+                        <span>@product.name</span>
+                        <span> - </span>
+                        <span>$@product.price</span>
+                    </li>
+                }
+            </ul>
+            <div class="productInfo" id="productInfo">
+                <div id="alertBox" class="alertBox" style="display: none">
+                    <span class="closebtn" id="closebtn">&times;</span>
+                    <p id="message"></p>
+                </div>
+                <div class="info">
+                    <div class="boxHeader">
+                        <span class="closebtn closeInfo" id="closeInfo">&times;</span>
+                    </div>
+                    <div class="boxBody">
+                        <p id="name"></p>
+                        <p id="description"></p>
+                        <p id="production"></p>
+                        <p id="price"></p>
+                    </div>
+                    <div class="boxFooter">
+                        <input type="number" id="quantity" class="textbox" name="quantity" min="0" value="0" required style="display:inline-block" />
+                        <button type="submit" class="button-primary btn" id="addCart">
+                            Agregar al carro de compras <i class="fas fa-cart-plus"></i>
+                        </button>
+                        <button type="submit" class="button-primary btn" id="download">Descargar Producto</button>
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="center">
+                <i class="far fa-sad-tear" style="font-size: 200px"></i>
+                <h5>Lo siento, no encontramos ningun resulatdo.</h5>
+            </div>
+        }
+    }
+}
+

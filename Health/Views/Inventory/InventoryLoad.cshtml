@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.BodyClass = "InventoryLoad";
+    ViewBag.Title = "Carga de inventario";
+    Layout = "~/Views/Partials/Layout.cshtml";
+}
+
+<input type="hidden" id="empty" value="@ViewBag.Empty" />
+<input type="hidden" id="state" value=@TempData["state"] />
+<div id="alertBox" class="alertBox" style="display: none">
+    <span class="closebtn" id="closebtn">&times;</span>
+    <p id="message"></p>
+</div>
+<div class="twelve columns center" style="padding: 25px">
+    <form class="form" id="form" action=@Url.Action("InventoryLoad") method="post" enctype="multipart/form-data">
+    </form>
+</div>
