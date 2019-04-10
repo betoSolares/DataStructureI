@@ -156,6 +156,25 @@ namespace Health.Controllers {
             return View("ReloadTree");
         }
 
+        // Return the view to find orders
+        [HttpGet]
+        public ActionResult SearchOrder() {
+            if (orders.IsEmpty()) {
+                TempData["state"] = "empty";
+            } else {
+                TempData["state"] = "noSearched";
+            }
+            return View();
+        }
+
+        // Return a list with the orders
+        [HttpPost]
+        public ActionResult SearchOrder(string search) {
+            ViewBag.Orders = OrdersList(search);
+            TempData["state"] = "searched";
+            return View();
+        }
+
         /**
          * @desc: Verify if there is a file and load to the tree the elements.
          * @param: HttpPostedFileBase fileUpload - the file to upload.
@@ -355,9 +374,25 @@ namespace Health.Controllers {
 
         // Create a new order and insert in the tree
         private void CreateOrder(string name, string address, string nit) {
-            Orders order = new Orders { name = name, address = address, nit = nit, products = shopCart };
-            orders.Insert(Guid.NewGuid(), order);
+            Guid guid = new Guid();
+            Orders order = new Orders { name = name, address = address, nit = nit, products = shopCart, guid = guid };
+            orders.Insert(guid, order);
             shopCart.Clear();
+        }
+
+        /**
+         * @desc: Verify if there is an element in the tree with the same guid.
+         * @param: string name - The name to search.
+         * @return: List<Orders> - The list with the elements.
+        **/
+        private List<Orders> OrdersList(string guid) {
+            List<Orders> _orders = new List<Orders>();
+            foreach (var element in orders.ToList()) {
+                if (element.guid.ToString().Contains(guid)) {
+                    _orders.Add(element);
+                }
+            }
+            return _orders;
         }
 
     }
