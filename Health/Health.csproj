@@ -138,9 +138,9 @@
     <Folder Include="App_Data\Files\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DataStructures\DataStructures.csproj">
-      <Project>{dda13a63-01d0-4aa7-a00a-b8aef52cb4ac}</Project>
-      <Name>DataStructures</Name>
+    <ProjectReference Include="..\DataStructure\DataStructure.csproj">
+      <Project>{0904a8eb-f701-409b-bfc8-7a0c824f5560}</Project>
+      <Name>DataStructure</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

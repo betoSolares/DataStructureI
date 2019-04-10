@@ -2,6 +2,8 @@
 $(document).ready(function () {
     if ($('body').is('.InventoryLoad')) {
         if ($('#empty').val() == 'empty') {
+            $order = $('<input type="number" class="textbox" name="order" min="2" max="2147483647" placeholder="Grado" required />')
+            $order.appendTo('#form')
             $input = $('<input type="file" name="PathFile" class="input-file" id="PathFile" accept=".csv" />')
             $input.appendTo($('#form'))
             $file = $('<label for="PathFile" class="file">Selecciona un archivo</label>')

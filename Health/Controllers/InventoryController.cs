@@ -1,4 +1,4 @@
-﻿using DataStructures;
+﻿using DataStructure;
 using Health.Models;
 using Newtonsoft.Json;
 using System;
@@ -13,7 +13,7 @@ namespace Health.Controllers {
     public class InventoryController : Controller {
 
         // Tree for the meds
-        private static BST<Meds, string> tree = new BST<Meds, string>();
+        private static BTree<Meds, string> tree;
 
         // Shop cart list
         private static List<Meds> shopCart = new List<Meds>();
@@ -24,18 +24,23 @@ namespace Health.Controllers {
         // Return the main view
         [HttpGet]
         public ActionResult InventoryLoad() {
-            if (tree.IsEmpty())
+            try {
+                if (tree.IsEmpty())
+                    ViewBag.Empty = "empty";
+                else
+                    ViewBag.Empty = "noEmpty";
+            } catch (Exception) {
                 ViewBag.Empty = "empty";
-            else
-                ViewBag.Empty = "noEmpty";
+            }
             return View();
         }
 
         // Load or download the file.
         [HttpPost]
-        public ActionResult InventoryLoad(HttpPostedFileBase PathFile, string formAction) {
+        public ActionResult InventoryLoad(HttpPostedFileBase PathFile, string formAction, int? order) {
             switch (formAction) {
                 case "Cargar Inventario":
+                    tree = new BTree<Meds, string>((int)order);
                     if (LoadFile(PathFile))
                         TempData["state"] = "success";
                     else
