@@ -589,3 +589,95 @@ textarea.form-control {
     text-align: center;
     width: 15%;
 }
+
+/** Orders info **/
+.ordersInfo {
+    animation-name: orderOpen;
+    animation-duration: 0.8s;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    height: 100%;
+    left: 0;
+    overflow: auto;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 3;
+}
+
+@keyframes orderOpen {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.info {
+    background-color: #f4f4f4;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.3), 0 7px 20px 0 rgba(0, 0, 0, 0.27);
+    margin: 10% auto;
+    padding: 20px;
+    width: 70%;
+}
+
+.closeInfo {
+    color: #cccccc;
+    font-size: 30px;
+}
+
+.boxHeader {
+    margin: 5px;
+}
+
+.boxBody {
+    margin: 10px;
+    padding: 10px;
+}
+
+.boxFooter {
+    margin: 10px;
+    padding: 10px;
+}
+
+.orderList {
+    background: #fdfdfd;
+    border-radius: 5px;
+    box-shadow: inset 0 0 0 15px #fdfdfd;
+    box-sizing: border-box;
+    margin: 2px auto 0;
+    overflow: hidden;
+    padding: 5px;
+    width: 75%;
+}
+
+.orderList .order {
+    background: #fefefe;
+    display: flex;
+    margin: 5px 0;
+    padding: 10px 20px;
+    transition: .5s;
+}
+
+.orderList .order:hover {
+    background: #f4f4f4;
+    cursor: pointer;
+    transform: scale(1.025);
+}
+
+.orderList .order span:nth-child(1) {
+    text-align: left;
+    width: 40%;
+}
+
+.orderList .order span:nth-child(2) {
+    text-align: center;
+    width: 15%;
+}
+
+.orderList .order span:nth-child(3) {
+    text-align: right;
+    width: 30%;
+}

@@ -175,6 +175,17 @@ namespace Health.Controllers {
             return View();
         }
 
+        // Return JSON format data with the information of the order
+        [HttpGet]
+        public JsonResult OrderInfo(string guid) {
+            try {
+                Orders order = orders.Find(Guid.Parse(guid));
+                return Json(new { guid = order.guid, name = order.name, address = order.address, nit = order.nit, products = order.products }, JsonRequestBehavior.AllowGet);
+            } catch (Exception) {
+                return Json(new { name = "null" }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
         /**
          * @desc: Verify if there is a file and load to the tree the elements.
          * @param: HttpPostedFileBase fileUpload - the file to upload.

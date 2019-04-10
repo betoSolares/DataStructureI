@@ -23,36 +23,27 @@
     </div>
     if (TempData["state"].Equals("searched")) {
         if (ViewBag.Orders.Count > 0) {
-            <ul id="products" class="productList">
+            <ul id="orders" class="orderList">
                 @foreach (var order in ViewBag.orders) {
-                    <li id="order" class="product order">
-                        <span>@order.name</span>
+                    <li id="order" class="order">
+                        <span>@order.guid</span>
                         <span> - </span>
-                        <span>Click to see more</span>
+                        <span>Click to see more information</span>
                     </li>
                 }
             </ul>
-            <div class="productInfo" id="productInfo">
-                <div id="alertBox" class="alertBox" style="display: none">
-                    <span class="closebtn" id="closebtn">&times;</span>
-                    <p id="message"></p>
-                </div>
+            <div class="ordersInfo" id="ordersInfo">
                 <div class="info">
                     <div class="boxHeader">
                         <span class="closebtn closeInfo" id="closeInfo">&times;</span>
                     </div>
                     <div class="boxBody">
                         <p id="name"></p>
-                        <p id="description"></p>
-                        <p id="production"></p>
-                        <p id="price"></p>
+                        <p id="address"></p>
+                        <p id="nit"></p>
                     </div>
                     <div class="boxFooter">
-                        <input type="number" id="quantity" class="textbox" name="quantity" min="0" value="0" required style="display:inline-block" />
-                        <button type="submit" class="button-primary btn" id="addCart">
-                            Agregar al carro de compras <i class="fas fa-cart-plus"></i>
-                        </button>
-                        <button type="submit" class="button-primary btn" id="download">Descargar Producto</button>
+                        <button type="submit" class="button-primary btn" id="download">Descargar Pedido</button>
                     </div>
                 </div>
             </div>

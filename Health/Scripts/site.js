@@ -139,3 +139,22 @@ $('.removeComplete').on('click', function () {
         }
     })
 })
+
+// Show order information
+$('.order').on('click', function (e) {
+    if (e.target == this) {
+        guid = $(this).find('span:first').text()
+        $.get('/Inventory/OrderInfo', { guid: guid }, function (data) {
+            $('#productInfo').show()
+            if (data.name != 'null') {
+                $('#name').text("Nombre: " + data.name)
+                $('#address').text("Dirección: " + data.address)
+                $('#nit').text("NIT: " + data.nit)
+                console.log(data)
+            } else {
+                console.log('err')
+            }
+        })   
+    }
+})
+
