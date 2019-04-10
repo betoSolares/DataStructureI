@@ -21,6 +21,9 @@ namespace Health.Controllers {
         // Removed products list
         private static List<Meds> removedProducts = new List<Meds>();
 
+        // Tree for the orders
+        private static BTree<Orders, Guid> orders;
+
         // Return the main view
         [HttpGet]
         public ActionResult InventoryLoad() {
@@ -41,6 +44,7 @@ namespace Health.Controllers {
             switch (formAction) {
                 case "Cargar Inventario":
                     tree = new BTree<Meds, string>((int)order);
+                    orders = new BTree<Orders, Guid>((int)order);
                     if (LoadFile(PathFile))
                         TempData["state"] = "success";
                     else
@@ -129,7 +133,7 @@ namespace Health.Controllers {
         // Get the information for the order
         [HttpPost]
         public ActionResult MakeOrder(string name, string address, string nit) {
-            shopCart.Clear();
+            CreateOrder(name, address, nit);
             TempData["state"] = "noCart";
             return View();
         }
@@ -347,6 +351,13 @@ namespace Health.Controllers {
             }
             removedProducts.Clear();
             return newProducts;
+        }
+
+        // Create a new order and insert in the tree
+        private void CreateOrder(string name, string address, string nit) {
+            Orders order = new Orders { name = name, address = address, nit = nit, products = shopCart };
+            orders.Insert(Guid.NewGuid(), order);
+            shopCart.Clear();
         }
 
     }
