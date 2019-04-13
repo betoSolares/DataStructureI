@@ -5,3 +5,15 @@ $(document).ready(function () {
         $(".navbar-menu").toggleClass("is-active")
     })
 })
+
+// Change the name of the file
+$(document).ready(function () {
+    $(".file-input").on("change", function () {
+        console.log($(this))
+        if ($(this).is("#albumInput")) {
+            $("#albumName").text($(this)[0].files[0].name)
+        } else if ($(this).is("#stateInput")) {
+            $("#stateName").text($(this)[0].files[0].name)
+        }
+    })
+})
