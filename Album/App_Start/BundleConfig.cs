@@ -8,6 +8,10 @@ namespace Album {
             // CSS bundle
             bundles.Add(new StyleBundle("~/bundles/style").Include(
                                         "~/Styles/bulma.min.css"));
+            // JS Bundle
+            bundles.Add(new ScriptBundle("~/bundles/script").Include(
+                                         "~/Scripts/jquery-min.js",
+                                         "~/Scripts/style.js"));
         }
 
     }
