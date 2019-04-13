@@ -17,3 +17,14 @@ $(document).ready(function () {
         }
     })
 })
+
+// Hide the unused elements in the LoadFiles view
+$(document).ready(function () {
+    if ($("#dictionaries").val() == "empty") {
+        $("#download").hide()
+    } else {
+        $("#filesChooser").hide()
+        $("#upload").hide()
+
+    }
+})

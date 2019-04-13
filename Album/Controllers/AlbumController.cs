@@ -12,6 +12,11 @@ namespace Album.Controllers {
 
         // Return the view to load the files
         public ActionResult LoadFiles(){
+            if(album.Count > 0 && collection.Count > 0) {
+                ViewBag.Dictionaries = "notEmpty";
+            } else {
+                ViewBag.Dictionaries = "empty";
+            }
             return View();
         }
         
