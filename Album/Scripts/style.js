@@ -42,3 +42,8 @@ $(document).ready(function () {
         $("#message").text("Hubo un error a la hora de cargar los archivos. Verifique que loas archivos sean los correctos")
     }
 })
+
+// Delete button hide parent container
+$(".delete").click(function () {
+    $(".delete").parent().hide()
+})
