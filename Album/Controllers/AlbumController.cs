@@ -112,6 +112,7 @@ namespace Album.Controllers {
                 }
             }
             reader.Close();
+            System.IO.File.Delete(path);
             return value;
         }
 
