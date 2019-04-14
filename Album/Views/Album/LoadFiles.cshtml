@@ -4,6 +4,11 @@
     Layout = "~/Views/Layout.cshtml";
 }
 <input type="hidden" id="dictionaries" value=@ViewBag.Dictionaries />
+<input type="hidden" id="state" value=@TempData["state"] />
+<div class="notification" style="display: none">
+    <button class="delete"></button>
+    <p id="message" class="has-text-white"></p>
+</div>
 <div class="content" style="padding-top: 25px">
     <h1 class="title has-text-centered">Cargar/Descargar archivos</h1>
     <div class="columns is-centered is-mobile">

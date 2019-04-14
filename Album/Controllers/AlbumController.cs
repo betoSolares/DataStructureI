@@ -32,8 +32,10 @@ namespace Album.Controllers {
                 case "UploadFiles":
                     if(ValidateFiles(album, state)) {
                         ViewBag.Dictionaries = "notEmpty";
+                        TempData["state"] = "success";
                     } else {
                         ViewBag.Dictionaries = "empty";
+                        TempData["state"] = "failed";
                     }
                     break;
                 case "DownloadFiles":
@@ -54,8 +56,12 @@ namespace Album.Controllers {
                 if(CheckExtension(album) && CheckExtension(collection)) {
                     string albumPath = StoreFile(album);
                     string collectionPath = StoreFile(collection);
-                    if(LoadData(albumPath, "album") && LoadData(collectionPath, "collection")) {
-                        value = true;
+                    try {
+                        if(LoadData(albumPath, "album") && LoadData(collectionPath, "collection")) {
+                            value = true;
+                        }
+                    } catch(Exception) {
+                        return false;
                     }
                 }
             }
