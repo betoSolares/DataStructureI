@@ -1,4 +1,5 @@
 ﻿using Album.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -35,6 +36,8 @@ namespace Album.Controllers {
                         ViewBag.Dictionaries = "empty";
                     }
                     break;
+                case "DownloadFiles":
+                    return DownloadFile("album_players");
             }
             return View();
         }
@@ -163,6 +166,22 @@ namespace Album.Controllers {
                 collection.Clear();
                 return false;
             }
+        }
+
+        /**
+         * @desc: Create the file and download them.
+         * @param: string name - The name of the file-
+         * @return: File - The file to download.
+        **/
+        private ActionResult DownloadFile(string name) {
+            string fileName = name + ".json";
+            string path = Path.Combine(Server.MapPath("~/App_Data/"), fileName);
+            if (!name.Equals("Player")) {
+                string content = "Album\n" + JsonConvert.SerializeObject(album, Formatting.Indented) + "\nPlayers\n" + JsonConvert.SerializeObject(collection, Formatting.Indented);
+                content = content.Replace("\n", Environment.NewLine);
+                System.IO.File.WriteAllText(path, content);
+            }
+            return File(System.IO.File.ReadAllBytes(path), "application/octet-stream", fileName);
         }
 
     }
