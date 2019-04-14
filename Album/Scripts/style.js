@@ -18,14 +18,21 @@ $(document).ready(function () {
     })
 })
 
-// Hide the unused elements in the LoadFiles view
+// Hide the unused elements in the views
 $(document).ready(function () {
     if ($("#dictionaries").val() == "empty") {
-        $("#download").hide()
+        if ($("body").hasClass("LoadFiles")) {
+            $("#download").hide()
+        } else if ($("body").hasClass("SearchSticker")) {
+            $("#searchbox").hide()
+        }
     } else {
-        $("#filesChooser").hide()
-        $("#upload").hide()
-
+        if ($("body").hasClass("LoadFiles")) {
+            $("#filesChooser").hide()
+            $("#upload").hide()
+        } else if ($("body").hasClass("SearchSticker")) {
+            $("#noDictionarie").hide()
+        }
     }
 })
 
