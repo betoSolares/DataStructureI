@@ -3,13 +3,14 @@
     ViewBag.Title = "Buscar Calcomanias";
     Layout = "~/Views/Layout.cshtml";
 }
+<input type="hidden" id="dictionaries"  value=@ViewBag.Dictionaries />
 <div class="content" style="padding-top: 25px">
     <h1 class="title has-text-centered">Buscar Calcomanias</h1>
 </div>
-<div class="container">
+<div id="searchbox" class="container">
     <div class="field has-addons">
         <div class="control is-expanded">
-            <input id="searchbox" class="input" type="text" name="searchbox" placeholder="¿Que buscas?" />
+            <input id="search" class="input" type="text" name="search" placeholder="¿Que buscas?" />
         </div>
         <div class="control">
             <button class="button is-info">
@@ -20,4 +21,7 @@
             </button>
         </div>
     </div>
+</div>
+<div id="noDictionarie" class="section">
+    <p class="subtitle is-5">Lo siento primero debes de cargar los archivos.</p>
 </div>

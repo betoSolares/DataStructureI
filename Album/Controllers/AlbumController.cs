@@ -47,6 +47,11 @@ namespace Album.Controllers {
         // Return the view to search stickers
         [HttpGet]
         public ActionResult SearchSticker() {
+            if(album.Count == 0 && collection.Count == 0) {
+                ViewBag.Dictionaries = "empty";
+            } else {
+                ViewBag.Dictionaries = "notEmpty";
+            }
             return View();
         }
 
