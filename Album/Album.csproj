@@ -123,6 +123,7 @@
     <None Include="packages.config" />
     <Content Include="Views\Layout.cshtml" />
     <Content Include="Views\Album\LoadFiles.cshtml" />
+    <Content Include="Views\Album\SearchSticker.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

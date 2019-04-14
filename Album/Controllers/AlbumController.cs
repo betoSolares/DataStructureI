@@ -44,6 +44,12 @@ namespace Album.Controllers {
             return View();
         }
 
+        // Return the view to search stickers
+        [HttpGet]
+        public ActionResult SearchSticker() {
+            return View();
+        }
+
         /**
          * @desc: Validate and save the data in each file in the directories.
          * @param: HttpPostedFileBase album - The file with the album data.
