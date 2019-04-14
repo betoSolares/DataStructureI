@@ -16,40 +16,46 @@
             <form method="post" action="/Album/LoadFiles" enctype="multipart/form-data">
                 <div id="filesChooser" class="field">
                     <label class="label">Escoga sus archivos</label>
-                    <div class="columns">
-                        <div class="column">
-                            <div class="file is-info is-boxed has-name">
-                                <label class="file-label">
-                                    <input id="albumInput" class="file-input" type="file" name="album"  accept=".csv" />
-                                    <span class="file-cta">
-                                        <span class="file-icon">
-                                            <i class="fas fa-file-upload"></i>
+                    <div class="field is-horizontal">
+                        <div class="field-body">
+                            <div class="field">
+                                <div class="file is-info is-boxed has-name is-centered">
+                                    <label class="file-label">
+                                        <input id="albumInput" class="file-input" type="file" name="album" accept=".csv" />
+                                        <span class="file-cta">
+                                            <span class="file-icon">
+                                                <i class="fas fa-file-upload"></i>
+                                            </span>
+                                            <span class="file-label">Album</span>
                                         </span>
-                                        <span class="file-label">Album</span>
-                                    </span>
-                                    <span id="albumName" class="file-name">Seleccione un archivo</span>
-                                </label>
+                                        <span id="albumName" class="file-name">Seleccione un archivo</span>
+                                    </label>
+                                </div>
                             </div>
-                        </div>
-                        <div class="column">
-                            <div class="file is-info is-boxed has-name">
-                                <label class="file-label">
-                                    <input  id="stateInput" class="file-input" type="file" name="state"  accept=".csv" />
-                                    <span class="file-cta">
-                                        <span class="file-icon">
-                                            <i class="fas fa-file-upload"></i>
+                            <div class="field">
+                                <div class="file is-info is-boxed has-name is-centered">
+                                    <label class="file-label">
+                                        <input id="stateInput" class="file-input" type="file" name="state" accept=".csv" />
+                                        <span class="file-cta">
+                                            <span class="file-icon">
+                                                <i class="fas fa-file-upload"></i>
+                                            </span>
+                                            <span class="file-label">Estado</span>
                                         </span>
-                                        <span class="file-label">Estado</span>
-                                    </span>
-                                    <span  id="stateName" class="file-name">Seleccione un archivo</span>
-                                </label>
+                                        <span id="stateName" class="file-name">Seleccione un archivo</span>
+                                    </label>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="has-text-centered">
-                    <button type="submit" id="upload" class="button are-medium is-info is-outlined is-rounded" value="UploadFiles" name="formAction">Cargar Archivos</button>
-                    <button type="submit" id="download" class="button are-medium is-info is-outlined is-rounded" value="DownloadFiles" name="formAction">Descargar Archivos</button>
+                <div class="field is-grouped is-grouped-centered">
+                    <div class="control">
+                        <button type="submit" id="upload" class="button are-medium is-info is-outlined is-rounded" value="UploadFiles" name="formAction">Cargar Archivos</button>
+                    </div>
+                    <div class="control">
+                        <button type="submit" id="download" class="button are-medium is-info is-outlined is-rounded" value="DownloadFiles" name="formAction">Descargar Archivos</button>
+                    </div>
                 </div>
             </form>
         </div>
