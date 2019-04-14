@@ -181,7 +181,9 @@ namespace Album.Controllers {
                 content = content.Replace("\n", Environment.NewLine);
                 System.IO.File.WriteAllText(path, content);
             }
-            return File(System.IO.File.ReadAllBytes(path), "application/octet-stream", fileName);
+            FileContentResult file = File(System.IO.File.ReadAllBytes(path), "application/octet-stream", fileName);
+            System.IO.File.Delete(path);
+            return file;
         }
 
     }
