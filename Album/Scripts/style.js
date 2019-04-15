@@ -54,3 +54,12 @@ $(document).ready(function () {
 $(".delete").click(function () {
     $(".delete").parent().hide()
 })
+
+// Disable the search field if the special radio button is checked
+$(".radio").on("change", function () {
+    if ($(this).children().is("#specialRadio")) {
+        $("#search").prop("disabled", true);
+    } else {
+        $("#search").prop("disabled", false);
+    }
+})
