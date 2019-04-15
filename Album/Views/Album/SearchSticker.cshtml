@@ -7,19 +7,35 @@
 <div class="content" style="padding-top: 25px">
     <h1 class="title has-text-centered">Buscar Calcomanias</h1>
 </div>
-<div id="searchbox" class="container">
-    <div class="field has-addons">
-        <div class="control is-expanded">
-            <input id="search" class="input" type="text" name="search" placeholder="¿Que buscas?" />
-        </div>
-        <div class="control">
-            <button class="button is-info">
-                <span class="icon">
-                    <i class="fas fa-search"></i>
-                </span>
-                <span>Buscar</span>
-            </button>
-        </div>
+<div id="searchbox" class="container is-fluid">
+    <div class="section">
+        <form method="post" action="/Album/SearchSticker">
+            <div class="field has-addons">
+                <div class="control is-expanded">
+                    <input id="search" class="input is-info is-rounded" type="text" name="search" placeholder="¿Que buscas?" />
+                </div>
+                <div class="control">
+                    <button class="button is-info is-rounded">
+                        <span class="icon">
+                            <i class="fas fa-search"></i>
+                        </span>
+                        <span>Buscar</span>
+                    </button>
+                </div>
+            </div>
+            <div class="field is-grouped is-grouped-centered">
+                <div class="control">
+                    <label class="radio">
+                        <input type="radio" name="type" value="Team" checked />
+                        Equipo
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="type" value="Special" />
+                        Especial
+                    </label>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
 <div id="noDictionarie" class="section">
