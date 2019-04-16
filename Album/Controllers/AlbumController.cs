@@ -57,20 +57,16 @@ namespace Album.Controllers {
 
         // Return the list of products
         [HttpPost]
-        public ActionResult SearchSticker(string search, string type) {
-            switch (type) {
-                case "Team":
-                    if(string.IsNullOrEmpty(search) || string.IsNullOrWhiteSpace(search)) {
-                        ViewBag.Stickers = StickersList();
-                    } else {
-                        ViewBag.Stickers = StickersList(search);
-                    }
-                    break;
-                case "Special":
-                    ViewBag.Stickers = SpecialStickers();
-                    break;
+        public JsonResult SearchSticker(string search, string type) {
+            if (type.Equals("Team")) {
+                if (string.IsNullOrEmpty(search) || string.IsNullOrWhiteSpace(search)) {
+                    return Json(new { stickers = StickersList() }, JsonRequestBehavior.AllowGet);
+                } else {
+                    return Json(new { stickers = StickersList(search) }, JsonRequestBehavior.AllowGet);
+                }
+            } else {
+                return Json(new { stickers = SpecialStickers() }, JsonRequestBehavior.AllowGet);
             }
-            return View();
         }
 
         /**
