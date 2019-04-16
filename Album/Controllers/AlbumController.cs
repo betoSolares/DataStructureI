@@ -55,6 +55,24 @@ namespace Album.Controllers {
             return View();
         }
 
+        // Return the list of products
+        [HttpPost]
+        public ActionResult SearchSticker(string search, string type) {
+            switch (type) {
+                case "Team":
+                    if(string.IsNullOrEmpty(search) || string.IsNullOrWhiteSpace(search)) {
+                        ViewBag.Stickers = StickersList();
+                    } else {
+                        ViewBag.Stickers = StickersList(search);
+                    }
+                    break;
+                case "Special":
+                    ViewBag.Stickers = SpecialStickers();
+                    break;
+            }
+            return View();
+        }
+
         /**
          * @desc: Validate and save the data in each file in the directories.
          * @param: HttpPostedFileBase album - The file with the album data.
@@ -201,6 +219,75 @@ namespace Album.Controllers {
             FileContentResult file = File(System.IO.File.ReadAllBytes(path), "application/octet-stream", fileName);
             System.IO.File.Delete(path);
             return file;
+        }
+
+        /**
+         * @desc: Return a list with all the elements that contains the name.
+         * @return: List<Player> - The stickers found.
+        **/
+        private List<Player> StickersList() {
+            List<Player> stickers = new List<Player>();
+            foreach(KeyValuePair<string, List<Player>> club in album) {
+                if(club.Key != "Special") {
+                    foreach(Player player in club.Value) {
+                        if (!IsCollected(player.sticker.id)) {
+                            stickers.Add(player);
+                        }
+                    }
+                }
+            }
+            return stickers;
+        }
+
+        /**
+         * @desc: Return a list with all the elements that contains the name.
+         * @param: string search - The name of the club to search.
+         * @return: List<Player> - The stickers found.
+        **/
+        private List<Player> StickersList(string search) {
+            List<Player> stickers = new List<Player>();
+            foreach(KeyValuePair<string, List<Player>> club in album) {
+                if(club.Key.ToLower().Contains(search.ToLower()) && club.Key != "Special") {
+                    foreach(Player player in club.Value) {
+                        if (!IsCollected(player.sticker.id)) {
+                            stickers.Add(player);
+                        }
+                    }
+                }
+            } 
+            return stickers;
+        }
+
+        /**
+         * @desc: Return a list with all the special stickers that dont are collected.
+         * @return: List<Player> - The stickers found.
+        **/
+        private List<Player> SpecialStickers() {
+            List<Player> stickers = new List<Player>();
+            foreach (KeyValuePair<string, List<Player>> club in album) {
+                if (club.Key.Equals("Special")) {
+                    foreach(Player player in club.Value) {
+                        if (!IsCollected(player.sticker.id)) {
+                            stickers.Add(player);
+                        }
+                    }
+                }
+            }
+            return stickers;
+        }
+
+        /**
+         * @desc: Check if the elementwith the id is collected.
+         * @param: int id - The id to check.
+         * @return: bool - True or false.
+        **/
+        private bool IsCollected(int id) {
+            foreach(KeyValuePair<Sticker, State> sticker in collection) {
+                if(sticker.Key.id == id) {
+                    return sticker.Value.collected;
+                }
+            }
+            return false;
         }
 
     }
