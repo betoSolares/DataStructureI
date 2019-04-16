@@ -8,50 +8,54 @@
     <h1 class="title has-text-centered">Buscar Calcomanias</h1>
 </div>
 <div id="searchbox" class="container is-fluid">
-    <div class="section">
-        <div class="field has-addons">
-            <div class="control is-expanded">
-                <input id="search" class="input is-info is-rounded" type="text" name="search" placeholder="¿Que buscas?" />
+    <form action="/Album/SearchSticker" method="post">
+        <div class="section">
+            <div class="field has-addons">
+                <div class="control is-expanded">
+                    <input id="search" class="input is-info is-rounded" type="text" name="search" placeholder="¿Que buscas?" />
+                </div>
+                <div class="control">
+                    <button id="buttonSearch" class="button is-info is-rounded">
+                        <span class="icon">
+                            <i class="fas fa-search"></i>
+                        </span>
+                        <span>Buscar</span>
+                    </button>
+                </div>
             </div>
-            <div class="control">
-                <button id="buttonSearch" class="button is-info is-rounded">
-                    <span class="icon">
-                        <i class="fas fa-search"></i>
-                    </span>
-                    <span>Buscar</span>
-                </button>
+            <div class="field is-grouped is-grouped-centered">
+                <div class="control">
+                    <label class="radio">
+                        <input id="teamRadio" type="radio" name="type" value="Team" checked />
+                        Equipo
+                    </label>
+                    <label class="radio">
+                        <input id="specialRadio" type="radio" name="type" value="Special" />
+                        Especial
+                    </label>
+                </div>
             </div>
         </div>
-        <div class="field is-grouped is-grouped-centered">
-            <div class="control">
-                <label class="radio">
-                    <input id="teamRadio" type="radio" name="type" value="Team" checked />
-                    Equipo
-                </label>
-                <label class="radio">
-                    <input id="specialRadio" type="radio" name="type" value="Special" />
-                    Especial
-                </label>
-            </div>
-        </div>
-    </div>
+    </form>
 </div>
 <div id="noDictionarie" class="section">
     <p class="subtitle is-5">Lo siento primero debes de cargar los archivos.</p>
 </div>
-<div id="noSticker" class="hero is-medium is-bold" style="display: none">
-    <div class="hero-body has-text-centered">
-        <div class="section ">
-            <div class="title">
-                <span class="icon">
-                    <i class="far fa-sad-tear fa-7x"></i>
-                </span>
+@if(ViewBag.Stickers != null && ViewBag.Stickers.Count == 0) {
+    <div id="noSticker" class="hero is-medium is-bold">
+        <div class="hero-body has-text-centered">
+            <div class="section ">
+                <div class="title">
+                    <span class="icon">
+                        <i class="far fa-sad-tear fa-7x"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="container">
+                <div class="subtitle">
+                    <p>Lo siento no hemos encontrado lo que buscabas.</p>
+                </div>
             </div>
         </div>
-        <div class="container">
-            <div class="subtitle">
-                <p>Lo siento no hemos encontrado lo que buscabas.</p>
-            </div>
-        </div>
-    </div>
 </div>
+}

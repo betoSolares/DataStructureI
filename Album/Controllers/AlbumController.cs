@@ -52,21 +52,23 @@ namespace Album.Controllers {
             } else {
                 ViewBag.Dictionaries = "notEmpty";
             }
+            ViewBag.Stickers = null;
             return View();
         }
 
         // Return the list of products
         [HttpPost]
-        public JsonResult SearchSticker(string search, string type) {
+        public ActionResult SearchSticker(string search, string type) {
             if (type.Equals("Team")) {
                 if (string.IsNullOrEmpty(search) || string.IsNullOrWhiteSpace(search)) {
-                    return Json(new { stickers = StickersList() }, JsonRequestBehavior.AllowGet);
+                    ViewBag.Stickers = StickersList();
                 } else {
-                    return Json(new { stickers = StickersList(search) }, JsonRequestBehavior.AllowGet);
+                    ViewBag.Stickers = StickersList(search);
                 }
             } else {
-                return Json(new { stickers = SpecialStickers() }, JsonRequestBehavior.AllowGet);
+                ViewBag.Stickers = SpecialStickers();
             }
+            return View();
         }
 
         /**
