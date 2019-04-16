@@ -11,7 +11,8 @@ namespace Album {
             // JS Bundle
             bundles.Add(new ScriptBundle("~/bundles/script").Include(
                                          "~/Scripts/jquery-min.js",
-                                         "~/Scripts/style.js"));
+                                         "~/Scripts/style.js",
+                                         "~/Scripts/site.js"));
         }
 
     }
